@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+
+import Menu from './components/Menu'
+import SEO from './components/SEO'
+import Hero from './components/Hero'
+import Layout from './components/Layout'
+
+const theme = createMuiTheme({
+	typography: {
+		fontFamily: [
+			'Alegreya Sans',
+			'-apple-system',
+			'BlinkMacSystemFont',
+			'"Segoe UI"',
+			'Roboto',
+			'"Helvetica Neue"',
+			'Arial',
+			'sans-serif',
+			'"Apple Color Emoji"',
+			'"Segoe UI Emoji"',
+			'"Segoe UI Symbol"',
+		].join(','),
+	},
+	props: {
+		// Name of the component ⚛️
+		MuiButtonBase: {
+			// The default props to change
+			disableRipple: true, // No more ripple, on the whole application 💣!
+		},
+	},
+})
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<MuiThemeProvider theme={theme}>
+				<SEO />
+				<Layout>
+					<Menu />
+					<Hero />
+				</Layout>
+			</MuiThemeProvider>
+		</div>
+	)
 }
 
-export default App;
+export default App
