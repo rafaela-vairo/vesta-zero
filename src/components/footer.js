@@ -9,7 +9,6 @@ const Footer = styled.div`
 	background: #333333;
 	padding: 2rem 11% 2rem 11%;
 	grid-column: 1 / span 5;
-	width: 100%;
 	height: auto;
 `
 
@@ -46,6 +45,7 @@ const Logos = styled.div`
 `
 
 const Subtitulo = styled.h4`
+	text-align: start;
 	margin-top: 20px;
 	color: #fff;
 	margin-bottom: 45px;

@@ -19,7 +19,7 @@ const Hero = styled.div`
 	background-origin: border-box;
 	background-repeat: no-repeat;
 	@media (min-width: 721px) {
-		height: calc(100vh - 85px);
+		height: 100vh;
 	}
 	> img {
 		margin: auto;
@@ -29,7 +29,6 @@ const Hero = styled.div`
 			height: 50%;
 			max-width: 350px;
 		}
-
 		width: 70vw;
 		height: 50%;
 	}
