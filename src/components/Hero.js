@@ -1,37 +1,47 @@
 import React from 'react'
 import styled from 'styled-components'
-//import bg from '../assets/images/backgroundSIQb.jpg'
+import LogoDesktop from '../assets/images/logos/cfp_titulo_desktop.svg'
+import LogoMobile from '../assets/images/logos/cfp_titulo-mobile.svg'
+import Background from '../assets/images/cfp_modulo_padronagem.svg'
 
 const Hero = styled.div`
 	grid-column: 1 / span 5;
 	grid-row-start: 1;
-	height: auto;
-	padding: 2rem;
+	height: 100vh;
 	display: flex;
 	justify-content: center;
-	background-image: linear-gradient(
-		0deg,
-		rgba(0, 29, 87, 1) 0%,
-		rgba(0, 51, 153, 1) 50%,
-		rgba(58, 124, 255, 1) 100%
-	);
-	background-size: cover;
-	background-origin: border-box;
-	background-repeat: no-repeat;
+	background: top left/84px url(${Background}) repeat;
 	@media (min-width: 721px) {
 		height: 100vh;
-	}
-	> img {
-		margin: auto;
-		@media (min-width: 721px) and (min-height: 721px) {
-			margin-top: 25vh;
-			width: 50%;
-			height: 50%;
-			max-width: 350px;
-		}
-		width: 70vw;
-		height: 50%;
+		background: top left/110px url(${Background}) repeat;
 	}
 `
 
-export default ({ children }) => <Hero>{children}</Hero>
+const Title = styled.h1`
+	display: grid;
+	height: 100vh;
+	margin: 0;
+	place-items: center center;
+	text-transform: uppercase;
+	font-family: 'Alegreya Sans Bold';
+	color: white;
+`
+
+const Logo = styled.div`
+	background: url(${LogoMobile}) no-repeat center center;
+	margin: auto;
+	@media (min-width: 721px) and (min-height: 721px) {
+		background: url(${LogoDesktop}) no-repeat center center;
+		max-width: 480px;
+		width: 50%;
+	}
+	width: 223px;
+	height: 50%;
+`
+
+export default ({ children }) => (
+	<Hero>
+		<Title>{children}</Title>
+		<Logo id='logo-principal' role='Logo do site' />
+	</Hero>
+)

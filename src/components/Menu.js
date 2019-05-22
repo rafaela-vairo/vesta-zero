@@ -1,67 +1,75 @@
 import React, { useState } from 'react'
-import Paper from '@material-ui/core/Paper'
+import styled from 'styled-components'
+import Box from '@material-ui/core/Box'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
-import { makeStyles } from '@material-ui/core/styles'
 import Collapse from '@material-ui/core/Collapse'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 import Divider from '@material-ui/core/Divider'
-import classNames from 'classnames'
 
-const useStyles = makeStyles(theme => ({
-	root: {
-		display: 'flex',
-		position: 'fixed',
-		top: '0%',
-		height: '100vh',
-		zIndex: '9999',
-		textTransform: 'uppercase',
-	},
-	paper: {
-		marginRight: theme.spacing(2),
-		position: 'absolute',
-		top: '50%',
-		width: '13vw',
-		maxHeight: '100vh',
-		overflowY: 'auto',
-		transform: 'translateY(-50%)',
-		borderRadius: '0 3px 3px 0 !important',
-		padding: '20px',
-	},
-	item: {
-		fontWeight: '500',
-		'&:hover': {
-			fontWeight: '700',
-		},
-	},
-	nester: {
-		justifyContent: 'space-between',
-		fontWeight: '500',
-		'&:hover': {
-			fontWeight: '700',
-		},
-	},
-	nested: {
-		paddingLeft: theme.spacing(4),
-		fontWeight: '500',
-		'&:hover': {
-			fontWeight: '700',
-		},
-	},
-	less: {
-		color: 'red',
-	},
-	more: {
-		color: 'red',
-	},
-	active: {
-		fontWeight: '700',
-	},
-}))
+const Root = styled.div`
+	display: flex;
+	position: fixed;
+	top: 0%;
+	height: 100vh;
+	z-index: 9999;
+	text-transform: lowercase;
+`
+
+const Item = styled(MenuItem)`
+	margin-left: 0 !important;
+	margin-right: 20px !important;
+`
+
+const Nester = styled(MenuItem)`
+	justify-content: space-between !important;
+	margin-right: 20px !important;
+`
+const Nested = styled(MenuItem)`
+	margin-left: 30px !important;
+	margin-right: 0 !important;
+	border-bottom: 1px solid #ccc !important;
+`
+
+const PaperBox = styled(Box)`
+	padding: 0 !important;
+	position: absolute;
+	top: 50%;
+	width: 220px;
+	max-height: 100vh;
+	overflow-y: auto;
+	transform: translateY(-50%);
+	border-radius: 0 3px 3px 0 !important;
+	padding: 20px;
+
+	${Item}, ${Nester}, ${Nested} {
+		padding-left: 30px !important;
+		letter-spacing: 1px;
+		font-family: 'Alegreya Sans SC Regular' !important;
+		font-size: 19px !important;
+		font-weight: 500;
+		&:hover {
+			font-weight: 700;
+		}
+		border-bottom: 1px solid #999;
+	}
+
+	${Item}:last-child, ${Nester}:last-child {
+		border-bottom: none !important;
+		padding-bottom: 45px;
+	}
+`
+
+const Less = styled(ExpandLess)`
+	color: red;
+`
+
+const More = styled(ExpandMore)`
+	color: red;
+`
 
 function MenuListComposition() {
-	const classes = useStyles()
 	const [open, setOpen] = useState(false)
 	const [active, inactive] = useState(false)
 
@@ -74,58 +82,31 @@ function MenuListComposition() {
 	}
 
 	return (
-		<div className={classes.root}>
-			<Paper className={classes.paper}>
+		<Root>
+			<PaperBox boxShadow={3} bgcolor='background.paper'>
 				<MenuList>
-					<MenuItem
-						button
-						divider
-						className={
-							active ? [classes.item, classes.active].join(' ') : classes.item
-						}
-						onClick={activeClick}
-					>
+					<Item button button>
 						Menu
-					</MenuItem>
-					<MenuItem
-						button
-						divider
-						className={
-							active ? [classes.item, classes.active].join(' ') : classes.item
-						}
-						onClick={activeClick}
-					>
+					</Item>
+					<Item button button>
 						Estrutura
-					</MenuItem>
-					<MenuItem className={classes.nester} onClick={openClick}>
+					</Item>
+					<Nester onClick={openClick}>
 						Ações Formativas
-						{open ? (
-							<ExpandLess className={classes.less} />
-						) : (
-							<ExpandMore className={classes.more} />
-						)}
-					</MenuItem>
+						{open ? <Less /> : <More />}
+					</Nester>
 					<Collapse in={open} timeout='auto' unmountOnExit>
-						<MenuItem className={classes.nested} button>
-							Item
-						</MenuItem>
-						<MenuItem className={classes.nested} button>
-							Item
-						</MenuItem>
-						<MenuItem className={classes.nested} button>
-							Item
-						</MenuItem>
-						<MenuItem className={classes.nested} button>
-							Item
-						</MenuItem>
+						<Nested button>Item</Nested>
+						<Nested button>Item</Nested>
+						<Nested button>Item</Nested>
+						<Nested button>Item</Nested>
 					</Collapse>
-					<Divider />
-					<MenuItem button divider className={classes.item}>
+					<Item button button>
 						Contato
-					</MenuItem>
+					</Item>
 				</MenuList>
-			</Paper>
-		</div>
+			</PaperBox>
+		</Root>
 	)
 }
 
