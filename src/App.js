@@ -1,18 +1,16 @@
 import React from 'react'
 import './App.css'
 import SEO from './components/SEO'
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import { MuiThemeProvider } from '@material-ui/core/styles'
 import Layout from './components/Layout'
 import styled from 'styled-components'
-import blueGrey from '@material-ui/core/colors/blueGrey'
-
+import { Theme } from './utils/Theme'
 import Menu from './components/Menu'
-import Footer from './components/footer'
+import Footer from './components/Footer'
 import Hero from './components/Hero'
-
-const Slide = styled.div`
-	text-align: start;
-`
+import Sobre from './components/Sobre'
+import Estrutura from './components/Estrutura'
+import CardGallery from './components/CardGallery'
 
 const AppContainer = styled.div`
 	> div {
@@ -21,42 +19,18 @@ const AppContainer = styled.div`
 	}
 `
 
-const theme = createMuiTheme({
-	typography: {
-		fontSize: 14,
-		fontFamily: [
-			'Alegreya Sans',
-			'-apple-system',
-			'BlinkMacSystemFont',
-			'"Segoe UI"',
-			'Roboto',
-			'"Helvetica Neue"',
-			'Arial',
-			'sans-serif',
-			'"Apple Color Emoji"',
-			'"Segoe UI Emoji"',
-			'"Segoe UI Symbol"',
-		].join(','),
-	},
-	props: {
-		MuiButtonBase: {
-			disableRipple: true,
-		},
-	},
-	palette: {
-		primary: blueGrey,
-	},
-})
-
 function App() {
 	return (
 		<div className='App'>
-			<MuiThemeProvider theme={theme}>
+			<MuiThemeProvider theme={Theme}>
 				<SEO />
 				<Layout>
 					<Menu />
 					<AppContainer>
 						<Hero />
+						<Sobre />
+						<Estrutura />
+						<CardGallery />
 						<Footer>
 							<a href='#footer'>Footer</a>
 						</Footer>

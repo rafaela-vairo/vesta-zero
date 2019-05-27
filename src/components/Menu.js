@@ -6,7 +6,8 @@ import MenuList from '@material-ui/core/MenuList'
 import Collapse from '@material-ui/core/Collapse'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
-import Divider from '@material-ui/core/Divider'
+import { Logo } from '../components/Atoms'
+import { Palette } from '../utils/Theme'
 
 const Root = styled.div`
 	display: flex;
@@ -29,7 +30,7 @@ const Nester = styled(MenuItem)`
 const Nested = styled(MenuItem)`
 	margin-left: 30px !important;
 	margin-right: 0 !important;
-	border-bottom: 1px solid #ccc !important;
+	border-bottom: 1px solid ${Palette.grey.light} !important;
 `
 
 const PaperBox = styled(Box)`
@@ -52,56 +53,66 @@ const PaperBox = styled(Box)`
 		&:hover {
 			font-weight: 700;
 		}
-		border-bottom: 1px solid #999;
+		border-bottom: 1px solid ${Palette.grey.medium} ;
 	}
 
 	${Item}:last-child, ${Nester}:last-child {
 		border-bottom: none !important;
-		padding-bottom: 45px;
+		padding-bottom: 26px;
 	}
 `
 
 const Less = styled(ExpandLess)`
-	color: red;
+	color: ${Palette.primary.medium};
 `
 
 const More = styled(ExpandMore)`
-	color: red;
+	color: ${Palette.primary.medium};
 `
 
 function MenuListComposition() {
 	const [open, setOpen] = useState(false)
-	const [active, inactive] = useState(false)
 
 	function openClick() {
 		setOpen(!open)
 	}
 
-	function activeClick() {
-		inactive(!active)
-	}
-
 	return (
 		<Root>
-			<PaperBox boxShadow={3} bgcolor='background.paper'>
+			<PaperBox boxShadow={4} bgcolor='background.paper'>
+				<Logo />
 				<MenuList>
-					<Item button button>
-						Menu
+					<Item component='button' href='#sobre'>
+						Sobre
 					</Item>
-					<Item button button>
+					<Item component='button' href='#estrutura'>
 						Estrutura
 					</Item>
-					<Nester onClick={openClick}>
+					<Nester component='button' onClick={openClick} href='#acoes'>
 						Ações Formativas
 						{open ? <Less /> : <More />}
 					</Nester>
 					<Collapse in={open} timeout='auto' unmountOnExit>
-						<Nested button>Item</Nested>
-						<Nested button>Item</Nested>
-						<Nested button>Item</Nested>
-						<Nested button>Item</Nested>
+						<Nested component='button' href='#item'>
+							Cursos
+						</Nested>
+						<Nested component='button' href='#item'>
+							Disciplinas
+						</Nested>
+						<Nested component='button' href='#item'>
+							Projetos
+						</Nested>
+						<Nested component='button' href='#item'>
+							Eventos
+						</Nested>
+						<Nested component='button' href='#item'>
+							Espaços
+						</Nested>
+						<Nested component='button' href='#item'>
+							Equipamentos
+						</Nested>
 					</Collapse>
-					<Item button button>
+					<Item component='button' href='#contato'>
 						Contato
 					</Item>
 				</MenuList>

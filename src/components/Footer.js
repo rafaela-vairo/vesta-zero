@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import logoUFRJ100anos from '../assets/images/logos/ufrj-100-anos-branco-horizontal.svg'
 import logoTIC from '../assets/images/logos/tic_branco.png'
 import logoCoordCom from '../assets/images/logos/coordcom-monocromia-branco-horizontal-sem-subtitulo.svg'
 
 const Footer = styled.div`
+	display: flex;
 	background: #333333;
-	padding: 2rem 11% 2rem 11%;
-	grid-column: 1 / span 5;
+	margin: 0px !important;
+	padding: 45px 0 45px 0 !important;
 	height: auto;
 `
 
@@ -16,7 +16,9 @@ const Container = styled.div`
 	@media (min-width: 721px) {
 		margin-top: 75px;
 	}
-	margin: 20px 0 45px 0;
+	width: 930px !important;
+	padding: 145px auto 45px auto !important;
+	margin: auto;
 	display: flex;
 	justify-content: left;
 	flex-wrap: wrap;

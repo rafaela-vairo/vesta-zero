@@ -42,6 +42,6 @@ const Logo = styled.div`
 export default ({ children }) => (
 	<Hero>
 		<Title>{children}</Title>
-		<Logo id='logo-principal' role='Logo do site' />
+		<Logo id='logo-principal' role='img' />
 	</Hero>
 )
