@@ -1,0 +1,36 @@
+/* $primary: #ed1c24;
+
+.alice-carousel__dots-item {
+	width: 12px;
+	height: 12px;
+	background-color: rgba($primary, 0) !important;
+	border: 2px solid rgba($primary, 0.8);
+	&.__active {
+		background-color: $primary !important;
+	}
+	&:hover {
+		background-color: $primary;
+	}
+	@media (min-width: 721px) {
+		width: 15px;
+		height: 15px;
+	}
+	&:not(:last-child) {
+		@media (min-width: 721px) {
+			margin-right: 14px;
+		}
+		margin-right: 0;
+	}
+}
+.alice-carousel__dots {
+	display: flex;
+	@media (min-width: 721px) {
+		display: inherit;
+	}
+	text-align: left !important;
+	padding-left: 30px !important;
+	line-height: 0.6rem;
+	justify-content: space-between;
+	margin: 45px 0 0 0 !important;
+}
+ */

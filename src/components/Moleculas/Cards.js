@@ -3,7 +3,6 @@ import Box from '@material-ui/core/Box'
 import styled from 'styled-components'
 import { Palette } from '../../utils/Theme'
 import Button from '@material-ui/core/Button'
-
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import Alarm from '@material-ui/icons/Alarm'
 import School from '@material-ui/icons/School'
