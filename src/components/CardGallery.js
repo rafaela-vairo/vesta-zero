@@ -11,7 +11,7 @@ export default () => (
 		</Titulo>
 
 		<Carousel>
-			<Grid container spacing={5}>
+			<Grid container spacing={5} style={{ padding: '5px 15px 30px 15px' }}>
 				<Grid item xs={6}>
 					<Card />
 				</Grid>

@@ -12,16 +12,12 @@ const SlideContainer = styled.div`
 `
 
 const SlideButtonLeft = styled(Button)`
-	font-size: 1.5rem !important;
-	color: ${Palette.primary.medium} !important;
 	span {
 		justify-content: flex-start;
 		padding-left: 0 !important;
 	}
 `
 const SlideButtonRight = styled(Button)`
-	font-size: 1.5rem !important;
-	color: ${Palette.primary.medium} !important;
 	span {
 		justify-content: flex-end;
 		padding-right: 0rem;
@@ -33,6 +29,12 @@ const Buttons = styled.div`
 	z-index: 999;
 	align-items: center;
 	justify-content: start;
+	${SlideButtonLeft}, ${SlideButtonRight} {
+		padding: 0px 8px !important;
+		min-width: 0px;
+		font-size: 1.5rem !important;
+		color: ${Palette.primary.medium} !important;
+	}
 `
 
 const Dot = styled.span`
@@ -65,6 +67,7 @@ const Dot = styled.span`
 
 const Dots = styled.ul`
 	padding: 0;
+	margin: 0;
 `
 
 export default class Gallery extends React.Component {

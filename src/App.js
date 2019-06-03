@@ -11,7 +11,7 @@ import Hero from './components/Hero'
 import Sobre from './components/Sobre'
 import Estrutura from './components/Estrutura'
 import CardGallery from './components/CardGallery'
-import Gallery from './components/Carousel'
+import Contato from './components/Contato'
 
 const AppContainer = styled.div`
 	> div {
@@ -26,14 +26,13 @@ function App() {
 			<MuiThemeProvider theme={Theme}>
 				<SEO />
 				<Layout>
-					<Gallery />
 					<Menu />
 					<AppContainer>
 						<Hero />
 						<Sobre />
 						<Estrutura />
 						<CardGallery />
-
+						<Contato />
 						<Footer>
 							<a href='#footer'>Footer</a>
 						</Footer>
