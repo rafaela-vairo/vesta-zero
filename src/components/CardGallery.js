@@ -12,80 +12,80 @@ export default () => (
 
 		<Carousel>
 			<Grid container spacing={5} style={{ padding: '5px 15px 30px 15px' }}>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
-					<Card />
-				</Grid>
-			</Grid>
-			<Grid container spacing={5}>
-				<Grid item xs={6}>
-					<Card />
-				</Grid>
-				<Grid item xs={6}>
-					<Card />
-				</Grid>
-				<Grid item xs={6}>
-					<Card />
-				</Grid>
-				<Grid item xs={6}>
-					<Card />
-				</Grid>
-				<Grid item xs={6}>
-					<Card />
-				</Grid>
-				<Grid item xs={6}>
-					<Card />
-				</Grid>
-				<Grid item xs={6}>
-					<Card />
-				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
 			</Grid>
 			<Grid container spacing={5}>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
+					<Card />
+				</Grid>
+			</Grid>
+			<Grid container spacing={5}>
+				<Grid item xs={12} sm={6}>
+					<Card />
+				</Grid>
+				<Grid item xs={12} sm={6}>
+					<Card />
+				</Grid>
+				<Grid item xs={12} sm={6}>
+					<Card />
+				</Grid>
+				<Grid item xs={12} sm={6}>
+					<Card />
+				</Grid>
+				<Grid item xs={12} sm={6}>
+					<Card />
+				</Grid>
+				<Grid item xs={12} sm={6}>
+					<Card />
+				</Grid>
+				<Grid item xs={12} sm={6}>
+					<Card />
+				</Grid>
+				<Grid item xs={12} sm={6}>
 					<Card />
 				</Grid>
 			</Grid>

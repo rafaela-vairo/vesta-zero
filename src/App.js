@@ -13,6 +13,8 @@ import Estrutura from './components/Estrutura'
 import CardGallery from './components/CardGallery'
 import Contato from './components/Contato'
 
+import FiltroDropdown from './components/FiltroDropdown'
+
 const AppContainer = styled.div`
 	> div {
 		padding-left: 13vw !important;
@@ -32,6 +34,7 @@ function App() {
 						<Sobre />
 						<Estrutura />
 						<CardGallery />
+						<FiltroDropdown />
 						<Contato />
 						<Footer>
 							<a href='#footer'>Footer</a>
