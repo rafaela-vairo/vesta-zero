@@ -85,19 +85,20 @@ const Card = styled(Box)`
 	}
 `
 
-export default () => (
+export default props => (
 	<Card>
 		<CHeader>
-			<CHLeft>Universidade Federal do Rio de Janeiro</CHLeft>
-			<CHRight>Curso</CHRight>
+			<CHLeft>{props.local}</CHLeft>
+			<CHRight>{props.tipo}</CHRight>
 		</CHeader>
-		<CTitle>Título do card lorem ipsum dolor sit amet</CTitle>
+		<CTitle>{props.titulo}</CTitle>
 		<Divider />
 		<CContent>
-			<StyAccountCircle /> 100 <StyAlarm /> 120h <StySchool /> Pós-Graduação
+			<StyAccountCircle /> {props.vagas} <StyAlarm /> {props.cargahoraria}{' '}
+			<StySchool /> {props.nivel}
 		</CContent>
 		<CFooter>
-			<CFLeft>Biomédicas</CFLeft>
+			<CFLeft>{props.categoria}</CFLeft>
 			<CFRight>Ver mais</CFRight>
 		</CFooter>
 	</Card>

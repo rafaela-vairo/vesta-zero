@@ -24,7 +24,7 @@ function App() {
 	return (
 		<div className='App'>
 			<MuiThemeProvider theme={Theme}>
-				<SEO />
+				<SEO title='Título do Site' />
 				<Layout>
 					<Menu />
 					<AppContainer>

@@ -162,6 +162,7 @@ function FiltroPopper(props) {
 		</div>
 	)
 }
+
 class FiltroDropdown extends React.Component {
 	state = {
 		openFirst: false,
@@ -186,7 +187,7 @@ class FiltroDropdown extends React.Component {
 
 		return (
 			<div className={classes.root}>
-				<did className={classes.titulocontainer}>
+				<div className={classes.titulocontainer}>
 					<Titulo className={classes.titulo}>{children}</Titulo>
 					<div>
 						<FormControl className={classes.formControl} variant='outlined'>
@@ -209,7 +210,7 @@ class FiltroDropdown extends React.Component {
 							<Filter className={classes.icon} /> Filtre os resultados
 						</Button>
 					</div>
-				</did>
+				</div>
 				<div className={classes.popper}>
 					<Collapse in={openFirst}>
 						<Divider />
