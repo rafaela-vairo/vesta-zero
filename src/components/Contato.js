@@ -122,7 +122,6 @@ function TextFields() {
 				<Titulo>
 					Contato <span />
 				</Titulo>
-
 				<form className={classes.container} noValidate autoComplete='off'>
 					<Grid container spacing={5} style={{ padding: '5px 15px 30px 15px' }}>
 						<Grid item xs={12} sm={6}>
