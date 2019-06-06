@@ -26,7 +26,7 @@ const listCards = numbers.map(number => (
 export default () => (
 	<Router>
 		<Container id='acoes'>
-			<Route path='/:slug' component={PostList} />
+			{/* <Route path='/' component={PostList} /> */}
 			<FiltroDropdown>
 				Ações Formativas <span />
 			</FiltroDropdown>

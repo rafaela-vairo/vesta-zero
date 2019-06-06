@@ -122,7 +122,13 @@ function TextFields() {
 				<Titulo>
 					Contato <span />
 				</Titulo>
-				<form className={classes.container} noValidate autoComplete='off'>
+				<form
+					className={classes.container}
+					noValidate
+					autoComplete='off'
+					action='https://formspree.io/luizggsantos@gmail.com'
+					method='POST'
+				>
 					<Grid container spacing={5} style={{ padding: '5px 15px 30px 15px' }}>
 						<Grid item xs={12} sm={6}>
 							<TextField
@@ -140,6 +146,8 @@ function TextFields() {
 								label='Email'
 								className={classes.textField}
 								margin='normal'
+								type='email'
+								name='_replyto'
 							/>
 						</Grid>
 						<Grid item xs={12} sm={6}>
@@ -149,6 +157,8 @@ function TextFields() {
 								label='Assunto'
 								className={classes.textField}
 								margin='normal'
+								type='text'
+								name='mensagem'
 							/>
 						</Grid>
 						<Grid item xs={12} sm={6}>
@@ -156,7 +166,12 @@ function TextFields() {
 								<InputLabel htmlFor='formatted-text-mask-input'>
 									Telefone
 								</InputLabel>
-								<Input id='telefone' inputComponent={TextMaskCustom} />
+								<Input
+									id='telefone'
+									inputComponent={TextMaskCustom}
+									type='tel'
+									name='telefone'
+								/>
 							</FormControl>
 						</Grid>
 						<Grid item xs={12}>
@@ -168,10 +183,12 @@ function TextFields() {
 								rows='8'
 								className={classes.textField}
 								margin='normal'
+								type='text'
+								name='name'
 							/>
 						</Grid>
 						<Grid item xs={12}>
-							<StyButton variant='outlined' color='primary'>
+							<StyButton variant='outlined' color='primary' type='submit'>
 								Enviar
 							</StyButton>
 						</Grid>
@@ -187,7 +204,7 @@ function TextFields() {
 									nome@email.com
 								</a>
 								<br />
-								<a href='tel: 2100000000'>
+								<a href='tel:2100000000'>
 									<StyPhone />
 									(21)0000-0000
 								</a>
