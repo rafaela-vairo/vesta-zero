@@ -21,6 +21,20 @@ const CHRight = styled.div`
 
 const CTitle = styled.h3`
 	margin: 30px 0 15px 0;
+	max-height: 48px;
+  overflow: hidden;
+  position: relative;
+  &:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  height: 1.2em;
+  background: linear-gradient(to right, rgb(237, 237, 237, 0), rgb(237, 237, 237, 1) 50%);
+	}
+}
 `
 
 const Divider = styled.hr`
