@@ -1,55 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import He from 'he'
-import axios from 'axios'
-import { Container } from './Atoms'
-import styled from 'styled-components'
-import { Palette } from '../utils/Theme'
-import Grid from '@material-ui/core/Grid'
-import Card from './Moleculas/Card'
-import FiltroDropdown from './FiltroDropdown'
-import Button from '@material-ui/core/Button'
+import React, { useState, useEffect } from 'react';
+import He from 'he';
+import axios from 'axios';
+import { Container } from './Atoms';
+import styled from 'styled-components';
+import { Palette } from '../utils/Theme';
+import Grid from '@material-ui/core/Grid';
+import Card from './Moleculas/Card';
+import FiltroDropdown from './FiltroDropdown';
+import Button from '@material-ui/core/Button';
 
-import { makeStyles } from '@material-ui/core/styles'
-import Dialog from '@material-ui/core/Dialog'
-import ListItemText from '@material-ui/core/ListItemText'
-import ListItem from '@material-ui/core/ListItem'
-import List from '@material-ui/core/List'
-import Divider from '@material-ui/core/Divider'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography'
-import CloseIcon from '@material-ui/icons/Close'
-import Slide from '@material-ui/core/Slide'
+import { makeStyles } from '@material-ui/core/styles';
+import Dialog from '@material-ui/core/Dialog';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Slide from '@material-ui/core/Slide';
 
-import CardInfo from './CardInfo'
+import CardInfo from './CardInfo';
 
 const API_URL =
-	'https://cfp.olimpo.tic.ufrj.br/wp-json/wp/v2/acoes?per_page=100'
-
-const hardcoded = {
-	local: '',
-	tipo: '',
-	titulo: '',
-	vagas: '',
-	cargahoraria: '',
-	nivel: '',
-	categoria: '',
-}
-
-/* const listCards = hardcoded.map(topic => (
-	<Grid item xs={12} sm={6}>
-		<Card
-			local={hardcoded.local}
-			tipo={hardcoded.tipo}
-			titulo={hardcoded.titulo}
-			vagas={hardcoded.vagas}
-			cargahoraria={hardcoded.cargahoraria}
-			nivel={hardcoded.nivel}
-			categoria={hardcoded.categoria}
-		/>
-	</Grid>
-)) */
+	'https://cfp.olimpo.tic.ufrj.br/wp-json/wp/v2/acoes?per_page=100';
 
 const CFRight = styled(Button)`
 	font-weight: 700 !important;
@@ -58,64 +27,64 @@ const CFRight = styled(Button)`
 	color: ${Palette.primary.medium} !important;
 	background-color: ${Palette.transparent} !important;
 	border-radius: 0px !important;
-`
+`;
 
 const Tag = styled.span`
 	padding-right: 5px;
 	white-space: nowrap;
 	:not(:first-child) {
-		border-left: 1px solid #000 !important;
+		border-left: 1px solid ${Palette.grey.dark} !important;
 		padding-left: 5px;
 	}
-`
+`;
 
 const useStyles = makeStyles(theme => ({
 	paper: {
-		backgroundColor: Palette.defaultBG,
+		backgroundColor: Palette.defaultBG
 	},
 	close: {
 		position: 'relative',
 		left: '-45px',
 		top: '45px',
 		'&:hover': {
-			color: Palette.primary.medium,
-		},
+			color: Palette.primary.medium
+		}
 	},
 	title: {
 		marginLeft: theme.spacing(2),
-		flex: 1,
-	},
-}))
+		flex: 1
+	}
+}));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-	return <Slide direction='up' ref={ref} {...props} />
-})
+	return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function CardGallery() {
-	const classes = useStyles()
-	const [data, setData] = useState([])
-	const [open, setOpen] = React.useState(false)
+	const classes = useStyles();
+	const [data, setData] = useState([]);
+	const [open, setOpen] = React.useState(false);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const result = await axios(`${API_URL}`)
-			setData(result.data)
-		}
-		fetchData()
-	}, [])
+			const result = await axios(`${API_URL}`);
+			setData(result.data);
+		};
+		fetchData();
+	}, []);
 
 	function handleClickOpen() {
-		setOpen(true)
+		setOpen(true);
 	}
 
 	function handleClose() {
-		setOpen(false)
+		setOpen(false);
 	}
 
-	console.log(data)
+	console.log(data);
 
 	return (
-		<Container id='acoes'>
+		<Container id="acoes">
 			<FiltroDropdown>
 				Ações Formativas <span />
 			</FiltroDropdown>
@@ -154,10 +123,10 @@ function CardGallery() {
 								<CardInfo>
 									<IconButton
 										className={classes.close}
-										edge='start'
-										color='inherit'
+										edge="start"
+										color="inherit"
 										onClick={handleClose}
-										aria-label='Close'
+										aria-label="Close"
 									>
 										<CloseIcon />
 									</IconButton>
@@ -168,7 +137,7 @@ function CardGallery() {
 				))}
 			</Grid>
 		</Container>
-	)
+	);
 }
 
-export default CardGallery
+export default CardGallery;
