@@ -1,25 +1,31 @@
-import React from 'react'
-import Box from '@material-ui/core/Box'
-import styled from 'styled-components'
-import { Palette } from '../../utils/Theme'
-import Button from '@material-ui/core/Button'
-import AccountCircle from '@material-ui/icons/AccountCircle'
-import Alarm from '@material-ui/icons/Alarm'
-import School from '@material-ui/icons/School'
+import React from 'react';
+import Box from '@material-ui/core/Box';
+import styled from 'styled-components';
+import { Palette } from '../../utils/Theme';
+import Button from '@material-ui/core/Button';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Alarm from '@material-ui/icons/Alarm';
+import School from '@material-ui/icons/School';
+import Tooltip from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
 
 const CHeader = styled.div`
 	display: flex;
 	justify-content: space-between;
 	color: ${Palette.primary.medium};
-`
+`;
 
-const CHLeft = styled.div``
+const CHLeft = styled.div``;
 
 const CHRight = styled.div`
 	font-weight: 700;
-`
+`;
 
-const CTitle = styled.h3`
+function TitleH3(props) {
+	// Spread the properties to the underlying DOM element.
+	return <h3 {...props}>{props.children}</h3>;
+}
+const CTitle = styled(TitleH3)`
 	margin: 30px 0 15px 0;
 	max-height: 48px;
   overflow: hidden;
@@ -35,7 +41,7 @@ const CTitle = styled.h3`
   background: linear-gradient(to right, rgb(237, 237, 237, 0), rgb(237, 237, 237, 1) 50%);
 	}
 }
-`
+`;
 
 const Divider = styled.hr`
 	height: 2px;
@@ -43,11 +49,11 @@ const Divider = styled.hr`
 	border: none;
 	flex-shrink: 0;
 	background-color: rgba(0, 0, 0, 0.2);
-`
+`;
 
-const StyAccountCircle = styled(AccountCircle)``
-const StyAlarm = styled(Alarm)``
-const StySchool = styled(School)``
+const StyAccountCircle = styled(AccountCircle)``;
+const StyAlarm = styled(Alarm)``;
+const StySchool = styled(School)``;
 
 const CContent = styled.div`
 	display: flex;
@@ -61,25 +67,26 @@ const CContent = styled.div`
 		padding-right: 7px;
 		padding-left: 15px;
 	}
-`
+`;
 
 const CFooter = styled.div`
 	display: flex;
 	margin: auto 0 0 0;
 	justify-content: space-between;
-`
+`;
 
 const CFLeft = styled.div`
 	color: ${Palette.grey.dark} !important;
-`
+`;
 
 const CFRight = styled(Button)`
 	font-weight: 700 !important;
 	padding: 0 !important;
 	margin: 0 !important;
 	color: ${Palette.primary.medium} !important;
+	background-color: ${Palette.transparent} !important;
 	border-radius: 0px !important;
-`
+`;
 
 const Card = styled(Box)`
 	display: flex;
@@ -97,7 +104,7 @@ const Card = styled(Box)`
 			box-shadow: inset 0px -2px 0px ${Palette.primary.medium};
 		}
 	}
-`
+`;
 
 export default props => (
 	<Card>
@@ -105,15 +112,25 @@ export default props => (
 			<CHLeft>{props.local}</CHLeft>
 			<CHRight>{props.tipo}</CHRight>
 		</CHeader>
-		<CTitle>{props.titulo}</CTitle>
+		<CTitle>
+			<Tooltip title={<Typography>{props.titulo}</Typography>} placement="top">
+				<div>{props.titulo}</div>
+			</Tooltip>
+		</CTitle>
 		<Divider />
 		<CContent>
-			<StyAccountCircle /> {props.vagas} <StyAlarm /> {props.cargahoraria}{' '}
-			<StySchool /> {props.nivel}
+			{props.vagas ? <StyAccountCircle /> : ''}
+			{props.vagas} {props.cargahoraria ? <StyAlarm /> : ''}
+			{props.cargahoraria}
+			{props.nivel ? <StySchool /> : ''}
+			{props.nivel}
 		</CContent>
 		<CFooter>
-			<CFLeft>{props.categoria}</CFLeft>
+			<CFLeft>
+				{props.categoria} {props.area}{' '}
+				{props.natureza ? ' | ' + props.natureza : ''}
+			</CFLeft>
 			<CFRight>Ver mais</CFRight>
 		</CFooter>
 	</Card>
-)
+);

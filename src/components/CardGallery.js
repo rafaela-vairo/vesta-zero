@@ -9,13 +9,13 @@ import FiltroDropdown from './FiltroDropdown'
 const API_URL = 'https://cfp.olimpo.tic.ufrj.br/wp-json/wp/v2'
 
 const hardcoded = {
-	local: 'Universidade Federal do Rio de Janeiro',
-	tipo: 'Ação',
-	titulo: 'Título',
-	vagas: '00',
-	cargahoraria: '00h',
-	nivel: 'Nível',
-	categoria: 'Categoria',
+	local: '',
+	tipo: '',
+	titulo: '',
+	vagas: '',
+	cargahoraria: '',
+	nivel: '',
+	categoria: '',
 }
 
 /* const listCards = hardcoded.map(topic => (
@@ -52,15 +52,17 @@ function CardGallery() {
 				{data.map(item => (
 					<Grid item xs={12} sm={6}>
 						<Card
-							local={item.local || hardcoded.local}
-							tipo={hardcoded.tipo}
+							local={item.acf.instituicao.post_title}
+							tipo={item.acf.acao_tipo.name}
 							titulo={He.decode(
 								item.title.rendered.replace(/(<([^>]+)>)/gi, '')
 							)}
-							vagas={item.acf.vagas || hardcoded.vagas}
-							cargahoraria={item.cargahoraria || hardcoded.cargahoraria}
-							nivel={item.nivel || hardcoded.nivel}
-							categoria={item.categoria || hardcoded.categoria}
+							vagas={item.acf.vagas}
+							cargahoraria={item.cargahoraria}
+							nivel={item.nivel}
+							categoria={item.categoria}
+							area={item.acf.area[0].name}
+							natureza={item.acf.natureza[0].name}
 						/>
 					</Grid>
 				))}
