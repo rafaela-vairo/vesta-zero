@@ -50,7 +50,9 @@ export const SubTexto = styled.div`
 export const Titulo = styled.h1`
 	display: inline-block !important;
 	width: auto;
-	margin-bottom: 45px;
+	line-height: 1.3em;
+	margin-block-start: 0;
+	margin-block-end: 45px;
 	font-size: 34px;
 	padding-top: 0;
 	span {
