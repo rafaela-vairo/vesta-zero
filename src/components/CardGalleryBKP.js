@@ -3,24 +3,21 @@ import He from 'he'
 import axios from 'axios'
 import { Container } from './Atoms'
 import styled from 'styled-components'
-
 import { Palette } from '../utils/Theme'
 import Grid from '@material-ui/core/Grid'
 import Card from './Moleculas/Card'
 import FiltroDropdown from './FiltroDropdown'
 import Button from '@material-ui/core/Button'
 
-import { withStyles, makeStyles } from '@material-ui/core/styles'
-import Dialog from '@material-ui/core/Dialog'
+import { makeStyles } from '@material-ui/core/styles'
+import Popover from '@material-ui/core/Popover'
+import IconButton from '@material-ui/core/IconButton'
+import CloseIcon from '@material-ui/icons/Close'
 import Slide from '@material-ui/core/Slide'
 
 import CardInfo from './CardInfo'
 
-import Menu from '@material-ui/core/Menu'
-import Switch from './Moleculas/Switches'
-import Less from '@material-ui/icons/ExpandLess'
-import More from '@material-ui/icons/ExpandMore'
-import Divider from '@material-ui/core/Divider'
+const API_URL = 'https://cfp.olimpo.tic.ufrj.br/wp-json/wp/v2'
 
 const CFRight = styled(Button)`
 	font-weight: 700 !important;
@@ -46,7 +43,6 @@ const Tag = styled.span`
 const useStyles = makeStyles(theme => ({
 	paper: {
 		backgroundColor: Palette.defaultBG,
-		padding: '60px',
 	},
 	close: {
 		position: 'relative',
@@ -60,19 +56,6 @@ const useStyles = makeStyles(theme => ({
 		marginLeft: theme.spacing(2),
 		flex: 1,
 	},
-	typography: {
-		padding: theme.spacing(2),
-	},
-	button: {
-		textTransform: 'none',
-		'&:hover': {
-			color: Palette.primary.medium,
-			backgroundColor: Palette.transparent,
-		},
-		'&.active': {
-			color: Palette.primary.medium,
-		},
-	},
 }))
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -80,56 +63,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 })
 
 function ModalPopper(props) {
-	const classes = useStyles()
-	const [open, setOpen] = React.useState(null)
-
-	function handleClickOpen() {
-		setOpen(true)
-	}
-
-	function handleClose() {
-		setOpen(false)
-	}
-
-	return (
-		<div>
-			<CFRight className={classes.button} onClick={handleClickOpen}>
-				Ver mais
-			</CFRight>
-			<Dialog
-				open={Boolean(open)}
-				onClose={handleClose}
-				TransitionComponent={Transition}
-				classes={{ paper: classes.paper }}
-			>
-				{props.children}
-			</Dialog>
-		</div>
-	)
-}
-
-const StyledMenu = withStyles({
-	paper: {
-		border: '1px solid #d3d4d5',
-		padding: '0 15px 0 15px',
-	},
-})(props => (
-	<Menu
-		elevation={0}
-		getContentAnchorEl={null}
-		anchorOrigin={{
-			vertical: 'bottom',
-			horizontal: 'center',
-		}}
-		transformOrigin={{
-			vertical: 'top',
-			horizontal: 'center',
-		}}
-		{...props}
-	/>
-))
-
-function FiltroPopper(props) {
 	const classes = useStyles()
 	const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -146,80 +79,57 @@ function FiltroPopper(props) {
 
 	return (
 		<div className={classes.innerpopper}>
-			<Button
+			<CFRight
 				aria-describedby={id}
 				aria-controls='customized-menu'
 				aria-haspopup='true'
 				className={classes.button}
 				onClick={handleClick}
 			>
-				{props.name} {open ? <Less /> : <More />}
-			</Button>
-			<StyledMenu
-				id='customized-menu'
+				Ver mais
+			</CFRight>
+			<Popover
 				anchorEl={anchorEl}
-				keepMounted
 				open={Boolean(anchorEl)}
+				keepMounted
 				onClose={handleClose}
+				TransitionComponent={Transition}
+				classes={{ paper: classes.paper }}
 			>
 				{props.children}
-			</StyledMenu>
+			</Popover>
 		</div>
 	)
 }
 
-function CardGallery(props) {
+function CardGallery() {
+	const classes = useStyles()
+	const [data, setData] = useState([])
+	const [open, setOpen] = React.useState(false)
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const result = await axios(`${API_URL}/acoes?per_page=100`)
+			setData(result.data)
+		}
+		fetchData()
+	}, [])
+
+	function handleClickOpen() {
+		setOpen(true)
+	}
+
+	function handleClose() {
+		setOpen(false)
+	}
+
 	return (
 		<Container id='acoes'>
-			<FiltroDropdown
-				titulo={
-					<>
-						Ações Formativas <span />
-					</>
-				}
-				filtros={
-					<>
-						<FiltroPopper name='Público Alvo'>
-							<Switch>Item 1</Switch>
-							<Divider />
-							<Switch>Item 2</Switch>
-							<Divider />
-							<Switch>Item 3</Switch>
-							<Divider />
-							<Switch>Item 4</Switch>
-						</FiltroPopper>
-						<FiltroPopper name='Natureza'>
-							<Switch>Item 1</Switch>
-							<Divider />
-							<Switch>Item 2</Switch>
-							<Divider />
-							<Switch>Item 3</Switch>
-							<Divider />
-							<Switch>Item 4</Switch>
-						</FiltroPopper>
-						<FiltroPopper name='Área de Conhecimento'>
-							<Switch>Item 1</Switch>
-							<Divider />
-							<Switch>Item 2</Switch>
-							<Divider />
-							<Switch>Item 3</Switch>
-							<Divider />
-							<Switch>Item 4</Switch>
-						</FiltroPopper>
-						<FiltroPopper name='Instituição'>
-							<Switch>Universidade Federal do Rio de Janeiro</Switch>
-							<Divider />
-							<Switch>Universidade Estadual do Rio de Janeiro</Switch>
-							<Divider />
-							<Switch>Universidade Federal Rural do Rio de Janeiro</Switch>
-							<Divider />
-							<Switch>Universidade Federal Fluminense</Switch>
-						</FiltroPopper>
-					</>
-				}
-			/>
+			<FiltroDropdown>
+				Ações Formativas <span />
+			</FiltroDropdown>
 			<Grid container spacing={5} style={{ padding: '5px 15px 30px 15px' }}>
-				{props.data.map((item, index) => (
+				{data.map((item, index) => (
 					<Grid item xs={12} sm={6}>
 						<Card
 							local={item.acf.instituicao.post_title}
@@ -261,10 +171,17 @@ function CardGallery(props) {
 											? item.acf.natureza.map(item => item.name)
 											: ''
 									}
-									content={He.decode(
-										item.content.rendered.replace(/(<([^>]+)>)/gi, '')
-									)}
-								/>
+								>
+									<IconButton
+										className={classes.close}
+										edge='start'
+										color='inherit'
+										onClick={handleClose}
+										aria-label='Close'
+									>
+										<CloseIcon />
+									</IconButton>
+								</CardInfo>
 							</ModalPopper>
 						</Card>
 					</Grid>

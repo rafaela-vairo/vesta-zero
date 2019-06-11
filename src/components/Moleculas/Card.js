@@ -2,7 +2,6 @@ import React from 'react'
 import Box from '@material-ui/core/Box'
 import styled from 'styled-components'
 import { Palette } from '../../utils/Theme'
-import Button from '@material-ui/core/Button'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import Alarm from '@material-ui/icons/Alarm'
 import School from '@material-ui/icons/School'
@@ -81,15 +80,6 @@ const CFLeft = styled.div`
 	text-overflow: ellipsis;
 `
 
-const CFRight = styled(Button)`
-	font-weight: 700 !important;
-	padding: 0 !important;
-	margin: 0 !important;
-	color: ${Palette.primary.medium} !important;
-	background-color: ${Palette.transparent} !important;
-	border-radius: 0px !important;
-`
-
 const Card = styled(Box)`
 	display: flex;
 	flex-direction: column;
@@ -102,9 +92,6 @@ const Card = styled(Box)`
 	&:hover {
 		border: 2px solid ${Palette.primary.medium};
 		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-		${CFRight} {
-			box-shadow: inset 0px -2px 0px ${Palette.primary.medium};
-		}
 	}
 `
 
@@ -124,14 +111,19 @@ export default props => (
 			{props.vagas ? <StyAccountCircle /> : ''}
 			{props.vagas} {props.cargahoraria ? <StyAlarm /> : ''}
 			{props.cargahoraria}
-			{props.nivel ? <StySchool /> : ''}
-			{props.nivel}
+			{props.natureza ? (
+				<>
+					<StySchool />
+					{props.natureza}
+				</>
+			) : (
+				''
+			)}
 		</CContent>
 		<CFooter>
 			<CFLeft>
 				{props.categoria ? props.categoria : ''}
 				{props.area ? props.area : ''}
-				{props.natureza ? props.natureza : ''}
 			</CFLeft>
 			{props.children}
 		</CFooter>

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.scss'
+import axios from 'axios'
 import SEO from './components/SEO'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import Layout from './components/Layout'
@@ -12,6 +13,8 @@ import Sobre from './components/Sobre'
 import Estrutura from './components/Estrutura'
 import CardGallery from './components/CardGallery'
 import Contato from './components/Contato'
+import MenuItem from '@material-ui/core/MenuItem'
+import { Palette } from './utils/Theme'
 
 const AppContainer = styled.div`
 	> div {
@@ -20,18 +23,69 @@ const AppContainer = styled.div`
 	}
 `
 
+const Nested = styled(MenuItem)`
+	margin-left: 30px !important;
+	margin-right: 0 !important;
+	border-bottom: 1px solid ${Palette.grey.light} !important;
+	padding-left: 30px !important;
+	letter-spacing: 1px;
+	font-family: 'Alegreya Sans SC Regular' !important;
+	font-size: 19px !important;
+	font-weight: 500;
+	&:hover {
+		font-weight: 700;
+		background-color: ${Palette.transparent} !important;
+	}
+	border-bottom: 1px solid ${Palette.grey.medium};
+`
+
+const API_URL = 'https://cfp.olimpo.tic.ufrj.br/wp-json/wp/v2'
+
 function App() {
+	const [data, setData] = useState([])
+	const [filter, setFilter] = useState('')
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const result = await axios(`${API_URL}/acoes?per_page=100${filter}`)
+			setData(result.data)
+		}
+		fetchData()
+	}, [filter])
+
 	return (
 		<div className='App'>
 			<MuiThemeProvider theme={Theme}>
 				<SEO title='Título do Site' />
 				<Layout>
-					<Menu />
+					<Menu>
+						<Nested component='button' onClick={() => setFilter('')}>
+							todas
+						</Nested>
+						<Nested component='button' onClick={() => setFilter('&tipo=26')}>
+							cursos
+						</Nested>
+						<Nested component='button' onClick={() => setFilter('&tipo=27')}>
+							disciplinas
+						</Nested>
+						<Nested component='button' onClick={() => setFilter('&tipo=31')}>
+							projetos
+						</Nested>
+						<Nested component='button' onClick={() => setFilter('&tipo=20')}>
+							eventos
+						</Nested>
+						<Nested component='button' onClick={() => setFilter('&tipo=10')}>
+							espaços
+						</Nested>
+						<Nested component='button' onClick={() => setFilter('&tipo=16')}>
+							equipamentos
+						</Nested>
+					</Menu>
 					<AppContainer>
 						<Hero />
 						<Sobre />
 						<Estrutura />
-						<CardGallery />
+						<CardGallery data={data} />
 						<Contato />
 						<Footer>
 							<a href='#footer'>Footer</a>
