@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { Palette } from "../utils/Theme";
-import { Texto, SubTexto, Subtitulo } from "./Atoms";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import Alarm from "@material-ui/icons/Alarm";
-import School from "@material-ui/icons/School";
+import React from 'react';
+import styled from 'styled-components';
+import { Palette } from '../utils/Theme';
+import { Texto } from './Atoms';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Alarm from '@material-ui/icons/Alarm';
+import School from '@material-ui/icons/School';
 
 const StyAccountCircle = styled(AccountCircle)``;
 const StyAlarm = styled(Alarm)``;
@@ -61,25 +61,37 @@ const InfoBasica = styled.div``;
 const CardInfo = props => {
 	return (
 		<div>
-			<Texto style={{ paddingBottom: "90px" }}>
+			<Texto style={{ paddingBottom: '90px' }}>
 				{props.children}
 				<StyTitulo>
 					{props.titulo} <span />
-					<Codigo>Código: {props.codigo ? props.codigo : "-"}</Codigo>
+					{props.codigo ? <Codigo>Código:{props.codigo}</Codigo> : ''}
 				</StyTitulo>
 				<InfoBasica>
 					<CContent>
-						<StyAccountCircle /> <strong>Vagas: </strong>{" "}
-						{props.vagas}
-						<StyAlarm /> <strong>Carga horária: </strong>{" "}
-						{props.cargahoraria}
+						{props.vagas ? (
+							<>
+								<StyAccountCircle /> <strong>Vagas: </strong> {props.vagas}
+							</>
+						) : (
+							''
+						)}
+						{props.cargahoraria ? (
+							<>
+								<StyAlarm /> <strong>Carga horária: </strong>{' '}
+								{props.cargahoraria}
+							</>
+						) : (
+							''
+						)}
+
 						{props.natureza ? (
 							<>
-								<StySchool /> <strong>Natureza: </strong>{" "}
+								<StySchool /> <strong>Natureza: </strong>
 								{props.natureza}
 							</>
 						) : (
-							""
+							''
 						)}
 					</CContent>
 					<Natureza>
