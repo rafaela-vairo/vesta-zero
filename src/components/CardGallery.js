@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react'
-import He from 'he'
-import axios from 'axios'
-import { Container } from './Atoms'
-import styled from 'styled-components'
+import React, { useState, useEffect } from "react";
+import He from "he";
+import axios from "axios";
+import { Container } from "./Atoms";
+import styled from "styled-components";
 
-import { Palette } from '../utils/Theme'
-import Grid from '@material-ui/core/Grid'
-import Card from './Moleculas/Card'
-import FiltroDropdown from './FiltroDropdown'
-import Button from '@material-ui/core/Button'
+import { Palette } from "../utils/Theme";
+import Grid from "@material-ui/core/Grid";
+import Card from "./Moleculas/Card";
+import FiltroDropdown from "./FiltroDropdown";
+import Button from "@material-ui/core/Button";
 
-import { withStyles, makeStyles } from '@material-ui/core/styles'
-import Dialog from '@material-ui/core/Dialog'
-import Slide from '@material-ui/core/Slide'
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+import Dialog from "@material-ui/core/Dialog";
+import Slide from "@material-ui/core/Slide";
 
-import CardInfo from './CardInfo'
+import CardInfo from "./CardInfo";
 
-import Menu from '@material-ui/core/Menu'
-import Switch from './Moleculas/Switches'
-import Less from '@material-ui/icons/ExpandLess'
-import More from '@material-ui/icons/ExpandMore'
-import Divider from '@material-ui/core/Divider'
+import Menu from "@material-ui/core/Menu";
+import Switch from "./Moleculas/Switches";
+import Less from "@material-ui/icons/ExpandLess";
+import More from "@material-ui/icons/ExpandMore";
+import Divider from "@material-ui/core/Divider";
 
 const CFRight = styled(Button)`
 	font-weight: 700 !important;
@@ -32,7 +32,7 @@ const CFRight = styled(Button)`
 	:hover {
 		box-shadow: inset 0px -2px 0px ${Palette.primary.medium};
 	}
-`
+`;
 
 const Tag = styled.span`
 	padding-right: 5px;
@@ -41,54 +41,54 @@ const Tag = styled.span`
 		border-left: 1px solid ${Palette.grey.dark} !important;
 		padding-left: 5px;
 	}
-`
+`;
 
 const useStyles = makeStyles(theme => ({
 	paper: {
 		backgroundColor: Palette.defaultBG,
-		padding: '60px',
+		padding: "60px"
 	},
 	close: {
-		position: 'relative',
-		left: '-45px',
-		top: '45px',
-		'&:hover': {
-			color: Palette.primary.medium,
-		},
+		position: "relative",
+		left: "-45px",
+		top: "45px",
+		"&:hover": {
+			color: Palette.primary.medium
+		}
 	},
 	title: {
 		marginLeft: theme.spacing(2),
-		flex: 1,
+		flex: 1
 	},
 	typography: {
-		padding: theme.spacing(2),
+		padding: theme.spacing(2)
 	},
 	button: {
-		textTransform: 'none',
-		'&:hover': {
+		textTransform: "none",
+		"&:hover": {
 			color: Palette.primary.medium,
-			backgroundColor: Palette.transparent,
+			backgroundColor: Palette.transparent
 		},
-		'&.active': {
-			color: Palette.primary.medium,
-		},
-	},
-}))
+		"&.active": {
+			color: Palette.primary.medium
+		}
+	}
+}));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-	return <Slide direction='up' ref={ref} {...props} />
-})
+	return <Slide direction='up' ref={ref} {...props} />;
+});
 
 function ModalPopper(props) {
-	const classes = useStyles()
-	const [open, setOpen] = React.useState(null)
+	const classes = useStyles();
+	const [open, setOpen] = React.useState(null);
 
 	function handleClickOpen() {
-		setOpen(true)
+		setOpen(true);
 	}
 
 	function handleClose() {
-		setOpen(false)
+		setOpen(false);
 	}
 
 	return (
@@ -105,44 +105,44 @@ function ModalPopper(props) {
 				{props.children}
 			</Dialog>
 		</div>
-	)
+	);
 }
 
 const StyledMenu = withStyles({
 	paper: {
-		border: '1px solid #d3d4d5',
-		padding: '0 15px 0 15px',
-	},
+		border: "1px solid #d3d4d5",
+		padding: "0 15px 0 15px"
+	}
 })(props => (
 	<Menu
 		elevation={0}
 		getContentAnchorEl={null}
 		anchorOrigin={{
-			vertical: 'bottom',
-			horizontal: 'center',
+			vertical: "bottom",
+			horizontal: "center"
 		}}
 		transformOrigin={{
-			vertical: 'top',
-			horizontal: 'center',
+			vertical: "top",
+			horizontal: "center"
 		}}
 		{...props}
 	/>
-))
+));
 
 function FiltroPopper(props) {
-	const classes = useStyles()
-	const [anchorEl, setAnchorEl] = React.useState(null)
+	const classes = useStyles();
+	const [anchorEl, setAnchorEl] = React.useState(null);
 
 	function handleClick(event) {
-		setAnchorEl(event.currentTarget)
+		setAnchorEl(event.currentTarget);
 	}
 
 	function handleClose() {
-		setAnchorEl(null)
+		setAnchorEl(null);
 	}
 
-	const open = Boolean(anchorEl)
-	const id = open ? 'filtro-popper' : null
+	const open = Boolean(anchorEl);
+	const id = open ? "filtro-popper" : null;
 
 	return (
 		<div className={classes.innerpopper}>
@@ -165,7 +165,7 @@ function FiltroPopper(props) {
 				{props.children}
 			</StyledMenu>
 		</div>
-	)
+	);
 }
 
 function CardGallery(props) {
@@ -207,25 +207,35 @@ function CardGallery(props) {
 							<Switch>Item 4</Switch>
 						</FiltroPopper>
 						<FiltroPopper name='Instituição'>
-							<Switch>Universidade Federal do Rio de Janeiro</Switch>
+							<Switch>
+								Universidade Federal do Rio de Janeiro
+							</Switch>
 							<Divider />
-							<Switch>Universidade Estadual do Rio de Janeiro</Switch>
+							<Switch>
+								Universidade Estadual do Rio de Janeiro
+							</Switch>
 							<Divider />
-							<Switch>Universidade Federal Rural do Rio de Janeiro</Switch>
+							<Switch>
+								Universidade Federal Rural do Rio de Janeiro
+							</Switch>
 							<Divider />
 							<Switch>Universidade Federal Fluminense</Switch>
 						</FiltroPopper>
 					</>
 				}
 			/>
-			<Grid container spacing={5} style={{ padding: '5px 15px 30px 15px' }}>
+			<Grid
+				container
+				spacing={5}
+				style={{ padding: "5px 15px 30px 15px" }}
+			>
 				{props.data.map((item, index) => (
 					<Grid item xs={12} sm={6}>
 						<Card
 							local={item.acf.instituicao.post_title}
 							tipo={item.acf.acao_tipo.name}
 							titulo={He.decode(
-								item.title.rendered.replace(/(<([^>]+)>)/gi, '')
+								item.title.rendered.replace(/(<([^>]+)>)/gi, "")
 							)}
 							vagas={item.acf.vagas}
 							cargahoraria={item.cargahoraria}
@@ -233,13 +243,15 @@ function CardGallery(props) {
 							categoria={item.categoria}
 							area={
 								item.acf.area
-									? item.acf.area.map(item => <Tag>{item.name}</Tag>)
-									: ''
+									? item.acf.area.map(item => (
+											<Tag>{item.name}</Tag>
+									  ))
+									: ""
 							}
 							natureza={
 								item.acf.natureza
 									? item.acf.natureza.map(item => item.name)
-									: ''
+									: ""
 							}
 						>
 							<ModalPopper>
@@ -247,22 +259,33 @@ function CardGallery(props) {
 									local={item.acf.instituicao.post_title}
 									tipo={item.acf.acao_tipo.name}
 									titulo={He.decode(
-										item.title.rendered.replace(/(<([^>]+)>)/gi, '')
+										item.title.rendered.replace(
+											/(<([^>]+)>)/gi,
+											""
+										)
 									)}
+									codigo={item.acf.codigo}
 									vagas={item.acf.vagas}
 									cargahoraria={item.cargahoraria}
 									area={
 										item.acf.area
-											? item.acf.area.map(item => <Tag>{item.name}</Tag>)
-											: ''
+											? item.acf.area.map(item => (
+													<Tag>{item.name}</Tag>
+											  ))
+											: ""
 									}
 									natureza={
 										item.acf.natureza
-											? item.acf.natureza.map(item => item.name)
-											: ''
+											? item.acf.natureza.map(
+													item => item.name
+											  )
+											: ""
 									}
 									content={He.decode(
-										item.content.rendered.replace(/(<([^>]+)>)/gi, '')
+										item.content.rendered.replace(
+											/(<([^>]+)>)/gi,
+											""
+										)
 									)}
 								/>
 							</ModalPopper>
@@ -271,7 +294,7 @@ function CardGallery(props) {
 				))}
 			</Grid>
 		</Container>
-	)
+	);
 }
 
-export default CardGallery
+export default CardGallery;

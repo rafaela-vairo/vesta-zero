@@ -1,14 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Palette } from '../utils/Theme'
-import { Texto, SubTexto, Subtitulo } from './Atoms'
-import AccountCircle from '@material-ui/icons/AccountCircle'
-import Alarm from '@material-ui/icons/Alarm'
-import School from '@material-ui/icons/School'
+import React from "react";
+import styled from "styled-components";
+import { Palette } from "../utils/Theme";
+import { Texto, SubTexto, Subtitulo } from "./Atoms";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import Alarm from "@material-ui/icons/Alarm";
+import School from "@material-ui/icons/School";
 
-const StyAccountCircle = styled(AccountCircle)``
-const StyAlarm = styled(Alarm)``
-const StySchool = styled(School)``
+const StyAccountCircle = styled(AccountCircle)``;
+const StyAlarm = styled(Alarm)``;
+const StySchool = styled(School)``;
 
 const StyTitulo = styled.h1`
 	width: auto;
@@ -23,7 +23,7 @@ const StyTitulo = styled.h1`
 		border-bottom: 3px solid ${Palette.primary.medium};
 		margin-top: 15px;
 	}
-`
+`;
 
 const CContent = styled.div`
 	display: flex;
@@ -42,41 +42,44 @@ const CContent = styled.div`
   ${StyAccountCircle}, ${StyAlarm}, ${StySchool} {
     color: ${Palette.primary.medium};
   }
-`
+`;
 
 const Codigo = styled.div`
 	color: ${Palette.primary.medium};
 	margin-top: 10px;
 	font-size: 18px;
 	font-weight: 500;
-`
+`;
 
 const Natureza = styled.div`
 	color: ${Palette.primary.medium};
 	margin-bottom: 45px;
-`
+`;
 
-const InfoBasica = styled.div``
+const InfoBasica = styled.div``;
 
 const CardInfo = props => {
 	return (
 		<div>
-			<Texto style={{ paddingBottom: '90px' }}>
+			<Texto style={{ paddingBottom: "90px" }}>
 				{props.children}
 				<StyTitulo>
 					{props.titulo} <span />
-					<Codigo>Código: ABC000</Codigo>
+					<Codigo>Código: {props.codigo ? props.codigo : "-"}</Codigo>
 				</StyTitulo>
 				<InfoBasica>
 					<CContent>
-						<StyAccountCircle /> <strong>Vagas: </strong> {props.vagas}
-						<StyAlarm /> <strong>Carga horária: </strong> {props.cargahoraria}
+						<StyAccountCircle /> <strong>Vagas: </strong>{" "}
+						{props.vagas}
+						<StyAlarm /> <strong>Carga horária: </strong>{" "}
+						{props.cargahoraria}
 						{props.natureza ? (
 							<>
-								<StySchool /> <strong>Natureza: </strong> {props.natureza}
+								<StySchool /> <strong>Natureza: </strong>{" "}
+								{props.natureza}
 							</>
 						) : (
-							''
+							""
 						)}
 					</CContent>
 					<Natureza>
@@ -86,7 +89,7 @@ const CardInfo = props => {
 				<p>{props.content}</p>
 			</Texto>
 		</div>
-	)
-}
+	);
+};
 
-export default CardInfo
+export default CardInfo;
