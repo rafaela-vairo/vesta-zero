@@ -20,8 +20,6 @@ function Sobre() {
 		fetchData()
 	}, [])
 
-	console.log(data)
-
 	var sobre =
 		typeof data.sobre == 'string' ? data.sobre.replace(/(<([^>]+)>)/gi, '') : ''
 
@@ -38,8 +36,6 @@ function Sobre() {
 			: ''
 
 	var files = typeof data.documentos == 'object' ? data.documentos.files : []
-
-	console.log(typeof data.documentos == 'object' ? data.documentos.files : [])
 
 	return (
 		<Container id='sobre'>

@@ -81,7 +81,7 @@ function App() {
 					<AppContainer>
 						<Hero />
 						<Sobre data={data} />
-						{/* <Estrutura /> */}
+						<Estrutura />
 						<CardGallery data={data} />
 						<Contato />
 						<Footer>

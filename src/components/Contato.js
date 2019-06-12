@@ -9,17 +9,18 @@ import FormControl from '@material-ui/core/FormControl'
 import PropTypes from 'prop-types'
 import { Container, ContainerAlt, Titulo } from './Atoms'
 import Grid from '@material-ui/core/Grid'
-import { Palette } from '../utils/Theme'
+//import { Palette } from '../utils/Theme'
 import Button from '@material-ui/core/Button'
-import AccountCircle from '@material-ui/icons/AccountCircle'
-import Mail from '@material-ui/icons/MailOutline'
-import Phone from '@material-ui/icons/Phone'
+//import AccountCircle from '@material-ui/icons/AccountCircle'
+//import Mail from '@material-ui/icons/MailOutline'
+//import Phone from '@material-ui/icons/Phone'
 
+/*
 const StyAccountCircle = styled(AccountCircle)``
 const StyMail = styled(Mail)``
 const StyPhone = styled(Phone)``
 
-const ContatoInfo = styled.div`
+ const ContatoInfo = styled.div`
 	a, p {
 		margin-block-start: 0;
 		margin-block-end: 0;
@@ -41,7 +42,7 @@ const ContatoInfo = styled.div`
 			color: ${Palette.primary.medium};
 		}
 	}
-`
+` */
 
 const StyButton = styled(Button)`
 	font-weight: 700 !important;

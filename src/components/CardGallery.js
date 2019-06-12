@@ -1,25 +1,25 @@
 import React from 'react'
 import He from 'he'
-import { Container, Titulo, Texto } from './Atoms'
+import { Container, Titulo } from './Atoms'
 import styled from 'styled-components'
 
 import { Palette } from '../utils/Theme'
 import Grid from '@material-ui/core/Grid'
 import Card from './Moleculas/Card'
-import FiltroDropdown from './FiltroDropdown'
+//import FiltroDropdown from './FiltroDropdown'
 import Button from '@material-ui/core/Button'
 
-import { withStyles, makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import Dialog from '@material-ui/core/Dialog'
 import Slide from '@material-ui/core/Slide'
 
 import CardInfo from './CardInfo'
 
-import Menu from '@material-ui/core/Menu'
-import Switch from './Moleculas/Switches'
-import Less from '@material-ui/icons/ExpandLess'
-import More from '@material-ui/icons/ExpandMore'
-import Divider from '@material-ui/core/Divider'
+//import Menu from '@material-ui/core/Menu'
+//import Switch from './Moleculas/Switches'
+//import Less from '@material-ui/icons/ExpandLess'
+//import More from '@material-ui/icons/ExpandMore'
+//import Divider from '@material-ui/core/Divider'
 
 const CFRight = styled(Button)`
 	font-weight: 700 !important;
@@ -116,7 +116,7 @@ function ModalPopper(props) {
 	)
 }
 
-const StyledMenu = withStyles({
+/*const StyledMenu = withStyles({
 	paper: {
 		border: '1px solid #d3d4d5',
 		padding: '0 15px 0 15px',
@@ -137,7 +137,7 @@ const StyledMenu = withStyles({
 	/>
 ))
 
-function FiltroPopper(props) {
+/* function FiltroPopper(props) {
 	const classes = useStyles()
 	const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -174,7 +174,7 @@ function FiltroPopper(props) {
 			</StyledMenu>
 		</div>
 	)
-}
+} */
 
 function CardGallery(props) {
 	return (
