@@ -1,28 +1,28 @@
-import React from 'react';
-import Box from '@material-ui/core/Box';
-import styled from 'styled-components';
-import { Palette } from '../../utils/Theme';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Alarm from '@material-ui/icons/Alarm';
-import School from '@material-ui/icons/School';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
+import React from 'react'
+import Box from '@material-ui/core/Box'
+import styled from 'styled-components'
+import { Palette } from '../../utils/Theme'
+import AccountCircle from '@material-ui/icons/AccountCircle'
+import Alarm from '@material-ui/icons/Alarm'
+import School from '@material-ui/icons/School'
+import Tooltip from '@material-ui/core/Tooltip'
+import Typography from '@material-ui/core/Typography'
 
 const CHeader = styled.div`
 	display: flex;
 	justify-content: space-between;
 	color: ${Palette.primary.medium};
-`;
+`
 
-const CHLeft = styled.div``;
+const CHLeft = styled.div``
 
 const CHRight = styled.div`
 	font-weight: 700;
-`;
+`
 
 function TitleH3(props) {
 	// Spread the properties to the underlying DOM element.
-	return <h3 {...props}>{props.children}</h3>;
+	return <h3 {...props}>{props.children}</h3>
 }
 const CTitle = styled(TitleH3)`
 	margin: 30px 0 15px 0;
@@ -40,7 +40,7 @@ const CTitle = styled(TitleH3)`
   background: linear-gradient(to right, rgb(237, 237, 237, 0), rgb(237, 237, 237, 1) 50%);
 	}
 }
-`;
+`
 
 const Divider = styled.hr`
 	height: 2px;
@@ -48,11 +48,11 @@ const Divider = styled.hr`
 	border: none;
 	flex-shrink: 0;
 	background-color: rgba(0, 0, 0, 0.2);
-`;
+`
 
-const StyAccountCircle = styled(AccountCircle)``;
-const StyAlarm = styled(Alarm)``;
-const StySchool = styled(School)``;
+const StyAccountCircle = styled(AccountCircle)``
+const StyAlarm = styled(Alarm)``
+const StySchool = styled(School)``
 
 const CContent = styled.div`
 	display: flex;
@@ -66,19 +66,19 @@ const CContent = styled.div`
 		padding-right: 7px;
 		padding-left: 15px;
 	}
-`;
+`
 
 const CFooter = styled.div`
 	display: flex;
 	margin: auto 0 0 0;
 	justify-content: space-between;
-`;
+`
 
 const CFLeft = styled.div`
 	color: ${Palette.grey.dark} !important;
 	overflow: hidden;
 	text-overflow: ellipsis;
-`;
+`
 
 const Card = styled(Box)`
 	display: flex;
@@ -93,7 +93,7 @@ const Card = styled(Box)`
 		border: 2px solid ${Palette.primary.medium};
 		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 	}
-`;
+`
 
 function CardAcao(props) {
 	return (
@@ -114,13 +114,15 @@ function CardAcao(props) {
 				)}
 				{props.vagas}{' '}
 				{props.cargahoraria ? (
-					<Tooltip title={<Typography>Carga Horária</Typography>}>
-						<StyAlarm />
-					</Tooltip>
+					<>
+						<Tooltip title={<Typography>Carga Horária</Typography>}>
+							<StyAlarm />
+						</Tooltip>
+						{props.cargahoraria}h
+					</>
 				) : (
 					''
 				)}
-				{props.cargahoraria}
 				{props.natureza ? (
 					<Tooltip title={<Typography>Natureza</Typography>}>
 						<StySchool />
@@ -138,7 +140,7 @@ function CardAcao(props) {
 				{props.children}
 			</CFooter>
 		</Card>
-	);
+	)
 }
 
-export default CardAcao;
+export default CardAcao

@@ -1,6 +1,6 @@
 import React from 'react'
 import He from 'he'
-import { Container } from './Atoms'
+import { Container, Titulo, Texto } from './Atoms'
 import styled from 'styled-components'
 
 import { Palette } from '../utils/Theme'
@@ -179,7 +179,10 @@ function FiltroPopper(props) {
 function CardGallery(props) {
 	return (
 		<Container id='acoes'>
-			<FiltroDropdown
+			<Titulo>
+				Ações Formativas <span />
+			</Titulo>
+			{/* <FiltroDropdown
 				titulo={
 					<>
 						Ações Formativas <span />
@@ -225,7 +228,7 @@ function CardGallery(props) {
 						</FiltroPopper>
 					</>
 				}
-			/>
+			/> */}
 			<Grid container spacing={5} style={{ padding: '5px 15px 30px 15px' }}>
 				{props.data.map(item => (
 					<Grid item xs={12} sm={6}>
@@ -280,7 +283,11 @@ function CardGallery(props) {
 									content={He.decode(
 										item.content.rendered.replace(/(<([^>]+)>)/gi, '')
 									)}
-									localidade={item.acf.local}
+									localidade={
+										item.acf.local
+											? item.acf.local.replace(/(<([^>]+)>)/gi, '')
+											: ''
+									}
 									observacoes={He.decode(
 										item.acf.observacoes.replace(/(<([^>]+)>)/gi, '')
 									)}

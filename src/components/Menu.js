@@ -81,9 +81,9 @@ function MenuListComposition(props) {
 					<Item component='button' href='#sobre'>
 						Sobre
 					</Item>
-					<Item component='button' href='#estrutura'>
+					{/* <Item component='button' href='#estrutura'>
 						Estrutura
-					</Item>
+					</Item> */}
 					<Nester component='button' onClick={openClick} href='#acoes'>
 						Ações Formativas
 						{open ? <Less /> : <More />}

@@ -23,7 +23,7 @@ function Sobre() {
 	console.log(data)
 
 	var sobre =
-		typeof data.sobre == 'object' ? data.sobre.replace(/(<([^>]+)>)/gi, '') : ''
+		typeof data.sobre == 'string' ? data.sobre.replace(/(<([^>]+)>)/gi, '') : ''
 
 	var historico =
 		typeof data.historico == 'string'

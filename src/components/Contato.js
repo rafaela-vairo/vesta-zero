@@ -126,7 +126,7 @@ function TextFields() {
 					className={classes.container}
 					noValidate
 					autoComplete='off'
-					action='https://formspree.io/luizggsantos@gmail.com'
+					action='https://formspree.io/cfp.comiteprovisorio@gmail.com'
 					method='POST'
 				>
 					<Grid container spacing={5} style={{ padding: '5px 15px 30px 15px' }}>
@@ -192,7 +192,7 @@ function TextFields() {
 								Enviar
 							</StyButton>
 						</Grid>
-						<Grid item xs={12}>
+						{/* <Grid item xs={12}>
 							<ContatoInfo>
 								<p>
 									<StyAccountCircle />
@@ -205,7 +205,7 @@ function TextFields() {
 									(21)0000-0000
 								</a>
 							</ContatoInfo>
-						</Grid>
+						</Grid> */}
 					</Grid>
 				</form>
 			</Container>

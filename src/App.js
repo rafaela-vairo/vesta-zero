@@ -74,14 +74,14 @@ function App() {
 						<Nested component='button' onClick={() => setFilter('&tipo=20')}>
 							eventos
 						</Nested>
-						<Nested component='button' onClick={() => setFilter('&tipo=10')}>
+						<Nested component='button' onClick={() => setFilter('&tipo=29')}>
 							espaços
 						</Nested>
 					</Menu>
 					<AppContainer>
 						<Hero />
 						<Sobre data={data} />
-						<Estrutura />
+						{/* <Estrutura /> */}
 						<CardGallery data={data} />
 						<Contato />
 						<Footer>

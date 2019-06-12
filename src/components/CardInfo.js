@@ -142,36 +142,39 @@ const CardInfo = props => {
 				<InfoBasica>
 					<CContent>
 						<Grid container spacing={1}>
-							<Grid item>
-								{props.vagas ? (
+							{props.vagas ? (
+								<Grid item>
 									<GridItem>
 										<StyAccountCircle /> <strong>{'  '} Vagas: </strong>{' '}
 										{props.vagas}
 									</GridItem>
-								) : (
-									''
-								)}
-							</Grid>
-							<Grid item>
-								{props.cargahoraria ? (
+								</Grid>
+							) : (
+								''
+							)}
+
+							{props.cargahoraria ? (
+								<Grid item>
 									<GridItem>
 										<StyAlarm /> <strong>{'  '} Carga horária: </strong>{' '}
-										{props.cargahoraria}
+										{props.cargahoraria}h
 									</GridItem>
-								) : (
-									''
-								)}
-							</Grid>
-							<Grid item>
-								{props.natureza ? (
+								</Grid>
+							) : (
+								''
+							)}
+
+							{props.natureza ? (
+								<Grid item>
 									<GridItem>
 										<StySchool /> <strong>{'  '} Natureza: </strong>
 										{props.natureza}
 									</GridItem>
-								) : (
-									''
-								)}
-							</Grid>
+								</Grid>
+							) : (
+								''
+							)}
+
 							<Grid item>
 								{props.publico ? (
 									<Publico>
@@ -182,23 +185,25 @@ const CardInfo = props => {
 									''
 								)}
 							</Grid>
-							<Grid item>
-								{props.localidade ? (
+
+							{props.localidade ? (
+								<Grid item>
 									<Local>
 										<StyPlace />
 										<span
 											style={{
 												top: '-3px',
 												position: 'relative',
+												whiteSpace: 'normal',
 											}}
 										>
 											<strong>{'  '} Local:</strong> {props.localidade}
 										</span>
 									</Local>
-								) : (
-									''
-								)}
-							</Grid>
+								</Grid>
+							) : (
+								''
+							)}
 						</Grid>
 					</CContent>
 					<Natureza>
