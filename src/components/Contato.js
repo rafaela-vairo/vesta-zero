@@ -196,14 +196,10 @@ function TextFields() {
 							<ContatoInfo>
 								<p>
 									<StyAccountCircle />
-									Fulano Sicrano
+									Nome Sobrenome
 								</p>
 								<br />
-								<a href='mailto:fulanosicrano@email.com subject=Assunto%20do%20mail'>
-									<StyMail />
-									nome@email.com
-								</a>
-								<br />
+
 								<a href='tel:2100000000'>
 									<StyPhone />
 									(21)0000-0000

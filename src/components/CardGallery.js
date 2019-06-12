@@ -1,29 +1,25 @@
-import React from 'react';
-import He from 'he';
-import { Container } from './Atoms';
-import styled from 'styled-components';
+import React from 'react'
+import He from 'he'
+import { Container } from './Atoms'
+import styled from 'styled-components'
 
-import { Palette } from '../utils/Theme';
-import Grid from '@material-ui/core/Grid';
-import Card from './Moleculas/Card';
-import FiltroDropdown from './FiltroDropdown';
-import Button from '@material-ui/core/Button';
+import { Palette } from '../utils/Theme'
+import Grid from '@material-ui/core/Grid'
+import Card from './Moleculas/Card'
+import FiltroDropdown from './FiltroDropdown'
+import Button from '@material-ui/core/Button'
 
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Dialog from '@material-ui/core/Dialog';
-import Slide from '@material-ui/core/Slide';
+import { withStyles, makeStyles } from '@material-ui/core/styles'
+import Dialog from '@material-ui/core/Dialog'
+import Slide from '@material-ui/core/Slide'
 
-import CardInfo from './CardInfo';
+import CardInfo from './CardInfo'
 
-import Menu from '@material-ui/core/Menu';
-import Switch from './Moleculas/Switches';
-import Less from '@material-ui/icons/ExpandLess';
-import More from '@material-ui/icons/ExpandMore';
-import Divider from '@material-ui/core/Divider';
-
-const PreP = styled.p`
-	white-space: pre-wrap;
-`;
+import Menu from '@material-ui/core/Menu'
+import Switch from './Moleculas/Switches'
+import Less from '@material-ui/icons/ExpandLess'
+import More from '@material-ui/icons/ExpandMore'
+import Divider from '@material-ui/core/Divider'
 
 const CFRight = styled(Button)`
 	font-weight: 700 !important;
@@ -35,7 +31,7 @@ const CFRight = styled(Button)`
 	:hover {
 		box-shadow: inset 0px -2px 0px ${Palette.primary.medium};
 	}
-`;
+`
 
 const Tag = styled.span`
 	padding-right: 5px;
@@ -44,54 +40,62 @@ const Tag = styled.span`
 		border-left: 1px solid ${Palette.grey.dark} !important;
 		padding-left: 5px;
 	}
-`;
+`
+
+const PublicoTag = styled.span`
+	padding-left: 5px;
+	:not(:last-of-type) {
+		border-right: 1px solid ${Palette.grey.dark} !important;
+		padding-right: 5px;
+	}
+`
 
 const useStyles = makeStyles(theme => ({
 	paper: {
 		backgroundColor: Palette.defaultBG,
-		padding: '60px'
+		padding: '60px',
 	},
 	close: {
 		position: 'relative',
 		left: '-45px',
 		top: '45px',
 		'&:hover': {
-			color: Palette.primary.medium
-		}
+			color: Palette.primary.medium,
+		},
 	},
 	title: {
 		marginLeft: theme.spacing(2),
-		flex: 1
+		flex: 1,
 	},
 	typography: {
-		padding: theme.spacing(2)
+		padding: theme.spacing(2),
 	},
 	button: {
 		textTransform: 'none',
 		'&:hover': {
 			color: Palette.primary.medium,
-			backgroundColor: Palette.transparent
+			backgroundColor: Palette.transparent,
 		},
 		'&.active': {
-			color: Palette.primary.medium
-		}
-	}
-}));
+			color: Palette.primary.medium,
+		},
+	},
+}))
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-	return <Slide direction="up" ref={ref} {...props} />;
-});
+	return <Slide direction='up' ref={ref} {...props} />
+})
 
 function ModalPopper(props) {
-	const classes = useStyles();
-	const [open, setOpen] = React.useState(null);
+	const classes = useStyles()
+	const [open, setOpen] = React.useState(null)
 
 	function handleClickOpen() {
-		setOpen(true);
+		setOpen(true)
 	}
 
 	function handleClose() {
-		setOpen(false);
+		setOpen(false)
 	}
 
 	return (
@@ -104,62 +108,63 @@ function ModalPopper(props) {
 				onClose={handleClose}
 				TransitionComponent={Transition}
 				classes={{ paper: classes.paper }}
+				maxWidth='md'
 			>
 				{props.children}
 			</Dialog>
 		</div>
-	);
+	)
 }
 
 const StyledMenu = withStyles({
 	paper: {
 		border: '1px solid #d3d4d5',
-		padding: '0 15px 0 15px'
-	}
+		padding: '0 15px 0 15px',
+	},
 })(props => (
 	<Menu
 		elevation={0}
 		getContentAnchorEl={null}
 		anchorOrigin={{
 			vertical: 'bottom',
-			horizontal: 'center'
+			horizontal: 'center',
 		}}
 		transformOrigin={{
 			vertical: 'top',
-			horizontal: 'center'
+			horizontal: 'center',
 		}}
 		{...props}
 	/>
-));
+))
 
 function FiltroPopper(props) {
-	const classes = useStyles();
-	const [anchorEl, setAnchorEl] = React.useState(null);
+	const classes = useStyles()
+	const [anchorEl, setAnchorEl] = React.useState(null)
 
 	function handleClick(event) {
-		setAnchorEl(event.currentTarget);
+		setAnchorEl(event.currentTarget)
 	}
 
 	function handleClose() {
-		setAnchorEl(null);
+		setAnchorEl(null)
 	}
 
-	const open = Boolean(anchorEl);
-	const id = open ? 'filtro-popper' : null;
+	const open = Boolean(anchorEl)
+	const id = open ? 'filtro-popper' : null
 
 	return (
 		<div className={classes.innerpopper}>
 			<Button
 				aria-describedby={id}
-				aria-controls="customized-menu"
-				aria-haspopup="true"
+				aria-controls='customized-menu'
+				aria-haspopup='true'
 				className={classes.button}
 				onClick={handleClick}
 			>
 				{props.name} {open ? <Less /> : <More />}
 			</Button>
 			<StyledMenu
-				id="customized-menu"
+				id='customized-menu'
 				anchorEl={anchorEl}
 				keepMounted
 				open={Boolean(anchorEl)}
@@ -168,12 +173,12 @@ function FiltroPopper(props) {
 				{props.children}
 			</StyledMenu>
 		</div>
-	);
+	)
 }
 
 function CardGallery(props) {
 	return (
-		<Container id="acoes">
+		<Container id='acoes'>
 			<FiltroDropdown
 				titulo={
 					<>
@@ -182,7 +187,7 @@ function CardGallery(props) {
 				}
 				filtros={
 					<>
-						<FiltroPopper name="Público Alvo">
+						<FiltroPopper name='Público Alvo'>
 							<Switch>Item 1</Switch>
 							<Divider />
 							<Switch>Item 2</Switch>
@@ -191,7 +196,7 @@ function CardGallery(props) {
 							<Divider />
 							<Switch>Item 4</Switch>
 						</FiltroPopper>
-						<FiltroPopper name="Natureza">
+						<FiltroPopper name='Natureza'>
 							<Switch>Item 1</Switch>
 							<Divider />
 							<Switch>Item 2</Switch>
@@ -200,7 +205,7 @@ function CardGallery(props) {
 							<Divider />
 							<Switch>Item 4</Switch>
 						</FiltroPopper>
-						<FiltroPopper name="Área de Conhecimento">
+						<FiltroPopper name='Área de Conhecimento'>
 							<Switch>Item 1</Switch>
 							<Divider />
 							<Switch>Item 2</Switch>
@@ -209,7 +214,7 @@ function CardGallery(props) {
 							<Divider />
 							<Switch>Item 4</Switch>
 						</FiltroPopper>
-						<FiltroPopper name="Instituição">
+						<FiltroPopper name='Instituição'>
 							<Switch>Universidade Federal do Rio de Janeiro</Switch>
 							<Divider />
 							<Switch>Universidade Estadual do Rio de Janeiro</Switch>
@@ -265,13 +270,23 @@ function CardGallery(props) {
 											? item.acf.natureza.map(item => item.name)
 											: ''
 									}
-									content={
-										<PreP>
-											{He.decode(
-												item.content.rendered.replace(/(<([^>]+)>)/gi, '')
-											)}
-										</PreP>
+									publico={
+										item.acf.alvo
+											? item.acf.alvo.map(item => (
+													<PublicoTag>{item.name}</PublicoTag>
+											  ))
+											: ''
 									}
+									content={He.decode(
+										item.content.rendered.replace(/(<([^>]+)>)/gi, '')
+									)}
+									localidade={item.acf.local}
+									observacoes={He.decode(
+										item.acf.observacoes.replace(/(<([^>]+)>)/gi, '')
+									)}
+									ementa={item.acf.ementa}
+									contatonome={item.acf.contato.nome}
+									contatofone={item.acf.contato.telefone}
 								/>
 							</ModalPopper>
 						</Card>
@@ -279,7 +294,7 @@ function CardGallery(props) {
 				))}
 			</Grid>
 		</Container>
-	);
+	)
 }
 
-export default CardGallery;
+export default CardGallery
