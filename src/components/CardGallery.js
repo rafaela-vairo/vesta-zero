@@ -2,36 +2,19 @@ import React from 'react'
 import He from 'he'
 import { Container, Titulo } from './Atoms'
 import styled from 'styled-components'
-
 import { Palette } from '../utils/Theme'
 import Grid from '@material-ui/core/Grid'
 import Card from './Moleculas/Card'
 //import FiltroDropdown from './FiltroDropdown'
-import Button from '@material-ui/core/Button'
-
-import { makeStyles } from '@material-ui/core/styles'
-import Dialog from '@material-ui/core/Dialog'
-import Slide from '@material-ui/core/Slide'
-
 import CardInfo from './CardInfo'
+
+import ModalPopper from './ModalPopper'
 
 //import Menu from '@material-ui/core/Menu'
 //import Switch from './Moleculas/Switches'
 //import Less from '@material-ui/icons/ExpandLess'
 //import More from '@material-ui/icons/ExpandMore'
 //import Divider from '@material-ui/core/Divider'
-
-const CFRight = styled(Button)`
-	font-weight: 700 !important;
-	padding: 0 !important;
-	margin: 0 !important;
-	color: ${Palette.primary.medium} !important;
-	background-color: ${Palette.transparent} !important;
-	border-radius: 0px !important;
-	:hover {
-		box-shadow: inset 0px -2px 0px ${Palette.primary.medium};
-	}
-`
 
 const Tag = styled.span`
 	padding-right: 5px;
@@ -49,72 +32,6 @@ const PublicoTag = styled.span`
 		padding-right: 5px;
 	}
 `
-
-const useStyles = makeStyles(theme => ({
-	paper: {
-		backgroundColor: Palette.defaultBG,
-		padding: '60px',
-	},
-	close: {
-		position: 'relative',
-		left: '-45px',
-		top: '45px',
-		'&:hover': {
-			color: Palette.primary.medium,
-		},
-	},
-	title: {
-		marginLeft: theme.spacing(2),
-		flex: 1,
-	},
-	typography: {
-		padding: theme.spacing(2),
-	},
-	button: {
-		textTransform: 'none',
-		'&:hover': {
-			color: Palette.primary.medium,
-			backgroundColor: Palette.transparent,
-		},
-		'&.active': {
-			color: Palette.primary.medium,
-		},
-	},
-}))
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-	return <Slide direction='up' ref={ref} {...props} />
-})
-
-function ModalPopper(props) {
-	const classes = useStyles()
-	const [open, setOpen] = React.useState(null)
-
-	function handleClickOpen() {
-		setOpen(true)
-	}
-
-	function handleClose() {
-		setOpen(false)
-	}
-
-	return (
-		<div>
-			<CFRight className={classes.button} onClick={handleClickOpen}>
-				Ver mais
-			</CFRight>
-			<Dialog
-				open={Boolean(open)}
-				onClose={handleClose}
-				TransitionComponent={Transition}
-				classes={{ paper: classes.paper }}
-				maxWidth='md'
-			>
-				{props.children}
-			</Dialog>
-		</div>
-	)
-}
 
 /*const StyledMenu = withStyles({
 	paper: {

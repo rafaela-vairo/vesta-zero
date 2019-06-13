@@ -24,6 +24,7 @@ const AppContainer = styled.div`
 `
 
 const Nested = styled(MenuItem)`
+	width: calc(100% - 30px) !important;
 	margin-left: 30px !important;
 	margin-right: 0 !important;
 	border-bottom: 1px solid ${Palette.grey.light} !important;
@@ -31,12 +32,12 @@ const Nested = styled(MenuItem)`
 	letter-spacing: 1px;
 	font-family: 'Alegreya Sans SC Regular' !important;
 	font-size: 19px !important;
-	font-weight: 500;
+	font-weight: 500 !important;
 	&:hover {
-		font-weight: 700;
+		font-weight: 700 !important;
 		background-color: ${Palette.transparent} !important;
 	}
-	border-bottom: 1px solid ${Palette.grey.medium};
+	border-bottom: 1px solid ${Palette.grey.medium}!important;
 `
 
 const API_URL = 'https://cfp.olimpo.tic.ufrj.br/wp-json/wp/v2'

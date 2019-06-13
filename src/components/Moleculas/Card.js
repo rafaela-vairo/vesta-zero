@@ -7,6 +7,8 @@ import Alarm from '@material-ui/icons/Alarm'
 import School from '@material-ui/icons/School'
 import Tooltip from '@material-ui/core/Tooltip'
 import Typography from '@material-ui/core/Typography'
+import Hidden from '@material-ui/core/Hidden'
+import Grid from '@material-ui/core/Grid'
 
 const CHeader = styled.div`
 	display: flex;
@@ -17,6 +19,7 @@ const CHeader = styled.div`
 const CHLeft = styled.div``
 
 const CHRight = styled.div`
+	color: ${Palette.primary.medium} !important;
 	font-weight: 700;
 `
 
@@ -56,15 +59,13 @@ const StySchool = styled(School)``
 
 const CContent = styled.div`
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	margin-top: 15px;
+	margin-bottom: 15px;
 	color: ${Palette.grey.dark};
-	${StyAccountCircle} {
-		padding-right: 7px;
-	}
-	${StyAlarm}, ${StySchool} {
-		padding-right: 7px;
-		padding-left: 15px;
+	${StyAlarm}, ${StySchool}, ${StyAccountCircle} {
+		padding-right: 5px;
 	}
 `
 
@@ -84,7 +85,7 @@ const Card = styled(Box)`
 	display: flex;
 	flex-direction: column;
 	border: 2px solid ${Palette.grey.medium};
-	height: 231px;
+	min-height: 231px;
 	padding: 30px;
 	border-radius: 3px;
 	box-shadow: 0 0px 0px rgba(0, 0, 0, 0.12), 0 0px 0px rgba(0, 0, 0, 0.24);
@@ -95,49 +96,85 @@ const Card = styled(Box)`
 	}
 `
 
+const SpanA = styled.span`
+	position: relative;
+	top: 5px;
+`
+
+const SpanB = styled.span`
+	position: relative;
+	top: -5px;
+`
+
 function CardAcao(props) {
 	return (
 		<Card>
 			<CHeader>
 				<CHLeft>{props.local}</CHLeft>
-				<CHRight>{props.tipo}</CHRight>
+				<Hidden lgDown>
+					<CHRight>{props.tipo}</CHRight>
+				</Hidden>
 			</CHeader>
 			<CTitle>{props.titulo}</CTitle>
 			<Divider />
 			<CContent>
-				{props.vagas ? (
-					<Tooltip title={<Typography>Vagas</Typography>}>
-						<StyAccountCircle />
-					</Tooltip>
-				) : (
-					''
-				)}
-				{props.vagas}{' '}
-				{props.cargahoraria ? (
-					<>
-						<Tooltip title={<Typography>Carga Horária</Typography>}>
-							<StyAlarm />
-						</Tooltip>
-						{props.cargahoraria}h
-					</>
-				) : (
-					''
-				)}
-				{props.natureza ? (
-					<Tooltip title={<Typography>Natureza</Typography>}>
-						<StySchool />
-					</Tooltip>
-				) : (
-					''
-				)}{' '}
-				{props.natureza}
+				<Grid container spacing={1}>
+					<Grid item>
+						<SpanA>
+							{props.vagas ? (
+								<Tooltip title={<Typography>Vagas</Typography>}>
+									<StyAccountCircle />
+								</Tooltip>
+							) : (
+								''
+							)}
+							<SpanB>{props.vagas}</SpanB>
+						</SpanA>
+					</Grid>
+					<Grid item>
+						<SpanA>
+							{props.cargahoraria ? (
+								<>
+									<Tooltip title={<Typography>Carga Horária</Typography>}>
+										<StyAlarm />
+									</Tooltip>
+									<SpanB>{props.cargahoraria}h</SpanB>
+								</>
+							) : (
+								''
+							)}
+						</SpanA>
+					</Grid>
+					<Grid item>
+						<SpanA>
+							{props.natureza ? (
+								<Tooltip title={<Typography>Natureza</Typography>}>
+									<StySchool />
+								</Tooltip>
+							) : (
+								''
+							)}{' '}
+							<SpanB>{props.natureza}</SpanB>
+						</SpanA>
+					</Grid>
+				</Grid>
 			</CContent>
 			<CFooter>
 				<CFLeft>
+					<Hidden xlUp>
+						<CHRight>{props.tipo}</CHRight>
+					</Hidden>
 					{props.categoria ? props.categoria : ''}
 					{props.area ? props.area : ''}
 				</CFLeft>
-				{props.children}
+				<div
+					style={{
+						display: 'flex',
+						alignSelf: 'flex-end',
+					}}
+				>
+					{props.children}
+				</div>
 			</CFooter>
 		</Card>
 	)

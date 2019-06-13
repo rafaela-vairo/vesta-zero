@@ -39,9 +39,10 @@ export const Texto = styled.div`
 `
 
 export const SubTexto = styled.div`
-	@media (min-width: 1170px) {
+	@media (min-width: 960px) {
+		padding-left: 45px;
 	}
-	padding-left: 45px;
+	padding-left: 0px;
 	> p {
 		margin: 0;
 	}

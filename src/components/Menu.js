@@ -6,8 +6,10 @@ import MenuList from '@material-ui/core/MenuList'
 import Collapse from '@material-ui/core/Collapse'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
-import { Logo } from '../components/Atoms'
+import { Logo } from './Atoms'
 import { Palette } from '../utils/Theme'
+import Hidden from '@material-ui/core/Hidden'
+import MenuB from './MenuB'
 
 const Root = styled.div`
 	display: flex;
@@ -75,27 +77,51 @@ function MenuListComposition(props) {
 
 	return (
 		<Root>
-			<PaperBox boxShadow={4} bgcolor='background.paper'>
-				<Logo />
-				<MenuList>
-					<Item component='button' href='#sobre'>
-						Sobre
-					</Item>
-					<Item component='button' href='#estrutura'>
-						Estrutura
-					</Item>
-					<Nester component='button' onClick={openClick} href='#acoes'>
-						Ações Formativas
-						{open ? <Less /> : <More />}
-					</Nester>
-					<Collapse in={open} timeout='auto' unmountOnExit>
-						{props.children}
-					</Collapse>
-					<Item component='button' href='#contato'>
-						Contato
-					</Item>
-				</MenuList>
-			</PaperBox>
+			<Hidden xlUp>
+				<MenuB>
+					<MenuList>
+						<Item component='button' href='#sobre'>
+							Sobre
+						</Item>
+						<Item component='button' href='#estrutura'>
+							Estrutura
+						</Item>
+						<Nester component='button' onClick={openClick} href='#acoes'>
+							Ações Formativas
+							{open ? <Less /> : <More />}
+						</Nester>
+						<Collapse in={open} timeout='auto' unmountOnExit>
+							{props.children}
+						</Collapse>
+						<Item component='button' href='#contato'>
+							Contato
+						</Item>
+					</MenuList>
+				</MenuB>
+			</Hidden>
+			<Hidden lgDown>
+				<PaperBox boxShadow={4} bgcolor='background.paper'>
+					<Logo />
+					<MenuList>
+						<Item component='button' href='#sobre'>
+							Sobre
+						</Item>
+						<Item component='button' href='#estrutura'>
+							Estrutura
+						</Item>
+						<Nester component='button' onClick={openClick} href='#acoes'>
+							Ações Formativas
+							{open ? <Less /> : <More />}
+						</Nester>
+						<Collapse in={open} timeout='auto' unmountOnExit>
+							{props.children}
+						</Collapse>
+						<Item component='button' href='#contato'>
+							Contato
+						</Item>
+					</MenuList>
+				</PaperBox>
+			</Hidden>
 		</Root>
 	)
 }
