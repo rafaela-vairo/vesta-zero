@@ -5,8 +5,8 @@ import favicon from '../assets/images/logo.ico'
 
 function SEO({ description, lang, meta, keywords, title }) {
 	const site = {
-		title: 'Título do Site',
-		description: 'Descrição do Site',
+		title: 'Complexo de Formação de Professores',
+		description: '',
 	}
 
 	const metaDescription = description || site.description
