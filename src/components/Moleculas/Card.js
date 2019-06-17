@@ -10,6 +10,68 @@ import Typography from '@material-ui/core/Typography'
 import Hidden from '@material-ui/core/Hidden'
 import Grid from '@material-ui/core/Grid'
 
+import { makeStyles } from '@material-ui/core/styles'
+import Dialog from '@material-ui/core/Dialog'
+import Slide from '@material-ui/core/Slide'
+import withMobileDialog from '@material-ui/core/withMobileDialog'
+import Button from '@material-ui/core/Button'
+import { ClickAwayListener } from '@material-ui/core'
+
+//////////////////////////////////////////
+
+const useStyles = makeStyles(theme => ({
+	paper: {
+		backgroundColor: Palette.defaultBG,
+		padding: '60px',
+	},
+	close: {
+		position: 'relative',
+		left: '-45px',
+		top: '45px',
+		'&:hover': {
+			color: Palette.primary.medium,
+		},
+	},
+	title: {
+		marginLeft: theme.spacing(2),
+		flex: 1,
+	},
+	typography: {
+		padding: theme.spacing(2),
+	},
+	button: {
+		'&:hover': {
+			color: Palette.primary.medium,
+			backgroundColor: Palette.transparent,
+		},
+		'&.active': {
+			color: Palette.primary.medium,
+		},
+	},
+	paperFullScreen: {
+		padding: '100px 30px 30px 30px',
+		height: '80%',
+	},
+}))
+
+const CFRight = styled(Button)`
+	font-weight: 700 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	color: ${Palette.primary.medium} !important;
+	background-color: ${Palette.transparent} !important;
+	border-radius: 0px !important;
+	:hover {
+		box-shadow: inset 0px -2px 0px ${Palette.primary.medium};
+	}
+`
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+	return <Slide direction='up' ref={ref} {...props} />
+})
+
+/////////////////////////////////////
+
 const CHeader = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -30,19 +92,22 @@ function TitleH3(props) {
 const CTitle = styled(TitleH3)`
 	margin: 30px 0 15px 0;
 	max-height: 48px;
-  overflow: hidden;
-  position: relative;
-  &:after {
-  content: "";
-  text-align: right;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 30%;
-  height: 1.2em;
-  background: linear-gradient(to right, rgb(237, 237, 237, 0), rgb(237, 237, 237, 1) 50%);
+	overflow: hidden;
+	position: relative;
+	&:after {
+		content: '';
+		text-align: right;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 30%;
+		height: 1.2em;
+		background: linear-gradient(
+			to right,
+			rgb(237, 237, 237, 0),
+			rgb(237, 237, 237, 1) 50%
+		);
 	}
-}
 `
 
 const Divider = styled.hr`
@@ -107,8 +172,25 @@ const SpanB = styled.span`
 `
 
 function CardAcao(props) {
+	const { fullScreen } = props
+	const [open, setOpen] = React.useState(false)
+	const anchorRef = React.useRef(null)
+	const classes = useStyles()
+
+	function handleToggle() {
+		setOpen(prevOpen => !prevOpen)
+	}
+
+	function handleClose(event) {
+		if (anchorRef.current && anchorRef.current.contains(event.target)) {
+			return
+		}
+
+		setOpen(false)
+	}
+
 	return (
-		<Card>
+		<Card onClick={handleToggle}>
 			<CHeader>
 				<CHLeft>{props.local}</CHLeft>
 				<Hidden lgDown>
@@ -173,11 +255,31 @@ function CardAcao(props) {
 						alignSelf: 'flex-end',
 					}}
 				>
-					{props.children}
+					<CFRight className={classes.button}>Ver mais</CFRight>
+
+					<div>
+						<Dialog
+							fullScreen={fullScreen}
+							open={open}
+							anchorEl={anchorRef.current}
+							keepMounted
+							disablePortal
+							TransitionComponent={Transition}
+							maxWidth='md'
+							classes={{
+								paperFullScreen: classes.paperFullScreen,
+								paper: classes.paper,
+							}}
+						>
+							<ClickAwayListener onClickAway={handleClose}>
+								{props.children}
+							</ClickAwayListener>
+						</Dialog>
+					</div>
 				</div>
 			</CFooter>
 		</Card>
 	)
 }
 
-export default CardAcao
+export default withMobileDialog()(CardAcao)

@@ -70,7 +70,16 @@ function SEO({ description, lang, meta, keywords, title }) {
 SEO.defaultProps = {
 	lang: `pt`,
 	meta: [],
-	keywords: [],
+	keywords: [
+		'complexo de formação de professores',
+		'complexo',
+		'formação',
+		'professores',
+		'licenciatura',
+		'pedagogia',
+		'ufrj',
+		'universidade',
+	],
 	description: ``,
 }
 

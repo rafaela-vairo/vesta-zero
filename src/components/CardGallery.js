@@ -8,8 +8,6 @@ import Card from './Moleculas/Card'
 //import FiltroDropdown from './FiltroDropdown'
 import CardInfo from './CardInfo'
 
-import ModalPopper from './ModalPopper'
-
 //import Menu from '@material-ui/core/Menu'
 //import Switch from './Moleculas/Switches'
 //import Less from '@material-ui/icons/ExpandLess'
@@ -170,49 +168,47 @@ function CardGallery(props) {
 									: ''
 							}
 						>
-							<ModalPopper>
-								<CardInfo
-									local={item.acf.instituicao.post_title}
-									tipo={item.acf.acao_tipo.name}
-									titulo={He.decode(
-										item.title.rendered.replace(/(<([^>]+)>)/gi, '')
-									)}
-									codigo={item.acf.codigo}
-									vagas={item.acf.vagas}
-									cargahoraria={item.acf.carga_horaria}
-									area={
-										item.acf.area
-											? item.acf.area.map(item => <Tag>{item.name}</Tag>)
-											: ''
-									}
-									natureza={
-										item.acf.natureza
-											? item.acf.natureza.map(item => item.name)
-											: ''
-									}
-									publico={
-										item.acf.alvo
-											? item.acf.alvo.map(item => (
-													<PublicoTag>{item.name}</PublicoTag>
-											  ))
-											: ''
-									}
-									content={He.decode(
-										item.content.rendered.replace(/(<([^>]+)>)/gi, '')
-									)}
-									localidade={
-										item.acf.local
-											? item.acf.local.replace(/(<([^>]+)>)/gi, '')
-											: ''
-									}
-									observacoes={He.decode(
-										item.acf.observacoes.replace(/(<([^>]+)>)/gi, '')
-									)}
-									ementa={item.acf.ementa}
-									contatonome={item.acf.contato.nome}
-									contatofone={item.acf.contato.telefone}
-								/>
-							</ModalPopper>
+							<CardInfo
+								local={item.acf.instituicao.post_title}
+								tipo={item.acf.acao_tipo.name}
+								titulo={He.decode(
+									item.title.rendered.replace(/(<([^>]+)>)/gi, '')
+								)}
+								codigo={item.acf.codigo}
+								vagas={item.acf.vagas}
+								cargahoraria={item.acf.carga_horaria}
+								area={
+									item.acf.area
+										? item.acf.area.map(item => <Tag>{item.name}</Tag>)
+										: ''
+								}
+								natureza={
+									item.acf.natureza
+										? item.acf.natureza.map(item => item.name)
+										: ''
+								}
+								publico={
+									item.acf.alvo
+										? item.acf.alvo.map(item => (
+												<PublicoTag>{item.name}</PublicoTag>
+										  ))
+										: ''
+								}
+								content={He.decode(
+									item.content.rendered.replace(/(<([^>]+)>)/gi, '')
+								)}
+								localidade={
+									item.acf.local
+										? item.acf.local.replace(/(<([^>]+)>)/gi, '')
+										: ''
+								}
+								observacoes={He.decode(
+									item.acf.observacoes.replace(/(<([^>]+)>)/gi, '')
+								)}
+								ementa={item.acf.ementa}
+								contatonome={item.acf.contato.nome}
+								contatofone={item.acf.contato.telefone}
+							/>
 						</Card>
 					</Grid>
 				))}

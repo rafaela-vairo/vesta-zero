@@ -13,7 +13,7 @@ const Hero = styled.div`
 	background: top left/84px url(${Background}) repeat;
 	@media (min-width: 721px) {
 		height: 100vh;
-		background: top left/110px url(${Background}) repeat;
+		background: top left/150px url(${Background}) repeat;
 	}
 `
 
@@ -40,7 +40,7 @@ const Logo = styled.div`
 `
 
 export default ({ children }) => (
-	<Hero>
+	<Hero id='home'>
 		<Title>{children}</Title>
 		<Logo id='logo-principal' role='img' />
 	</Hero>

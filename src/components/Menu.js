@@ -21,13 +21,43 @@ const Root = styled.div`
 `
 
 const Item = styled(MenuItem)`
+	width: 100% !important;
 	margin-left: 0 !important;
 	margin-right: 20px !important;
+	padding-left: 30px !important;
+	letter-spacing: 1px;
+	font-family: 'Alegreya Sans SC Regular' !important;
+	font-size: 19px !important;
+	font-weight: 500;
+	&:hover {
+		font-weight: 700;
+		background-color: ${Palette.transparent} !important;
+	}
+	border-bottom: 1px solid ${Palette.grey.medium} !important;
+	&:last-child {
+		border-bottom: none !important;
+		padding-bottom: 26px;
+	}
 `
 
 const Nester = styled(MenuItem)`
+	width: 100% !important;
 	justify-content: space-between !important;
 	margin-right: 20px !important;
+	padding-left: 30px !important;
+	letter-spacing: 1px;
+	font-family: 'Alegreya Sans SC Regular' !important;
+	font-size: 19px !important;
+	font-weight: 500;
+	&:hover {
+		font-weight: 700;
+		background-color: ${Palette.transparent} !important;
+	}
+	border-bottom: 1px solid ${Palette.grey.medium} !important;
+	&:last-child {
+		border-bottom: none !important;
+		padding-bottom: 26px;
+	}
 `
 
 const PaperBox = styled(Box)`
@@ -101,7 +131,9 @@ function MenuListComposition(props) {
 			</Hidden>
 			<Hidden lgDown>
 				<PaperBox boxShadow={4} bgcolor='background.paper'>
-					<Logo />
+					<a href='#home'>
+						<Logo />
+					</a>
 					<MenuList>
 						<Item component='button' href='#sobre'>
 							Sobre
