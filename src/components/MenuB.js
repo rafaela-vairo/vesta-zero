@@ -5,8 +5,9 @@ import Toolbar from '@material-ui/core/Toolbar'
 import logoimg from '../assets/images/logos/logo-cfp.svg'
 import Collapse from '@material-ui/core/Collapse'
 import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
 import { ClickAwayListener } from '@material-ui/core'
+
+import { HamburgerSpring } from 'react-animated-burgers'
 
 const Expand = styled(IconButton)`
 	top: 0;
@@ -22,6 +23,12 @@ const LogoIMG = styled.img`
 	height: 24px;
 `
 const Logo = () => <LogoIMG src={logoimg} alt='Logo do site' />
+
+const StyHamburgerSpring = styled(HamburgerSpring)`
+	:focus {
+		outline: none;
+	}
+`
 
 export default function HideAppBar(props) {
 	const [open, setOpen] = React.useState(false)
@@ -51,7 +58,7 @@ export default function HideAppBar(props) {
 						aria-haspopup='true'
 						onClick={handleToggle}
 					>
-						<MenuIcon />
+						<StyHamburgerSpring isActive={open} buttonWidth={20} />
 					</Expand>
 				</StyToolBar>
 				<Collapse in={open} anchorEl={anchorRef.current}>

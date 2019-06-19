@@ -60,22 +60,46 @@ function App() {
 				<SEO title='Título do Site' />
 				<Layout>
 					<Menu>
-						<Nested component='button' onClick={() => setFilter('')}>
+						<Nested
+							component='button'
+							onClick={() => setFilter('')}
+							href='#acoes'
+						>
 							todas
 						</Nested>
-						<Nested component='button' onClick={() => setFilter('&tipo=26')}>
+						<Nested
+							component='button'
+							onClick={() => setFilter('&tipo=26')}
+							href='#acoes'
+						>
 							cursos
 						</Nested>
-						<Nested component='button' onClick={() => setFilter('&tipo=27')}>
+						<Nested
+							component='button'
+							onClick={() => setFilter('&tipo=27')}
+							href='#acoes'
+						>
 							disciplinas
 						</Nested>
-						<Nested component='button' onClick={() => setFilter('&tipo=31')}>
+						<Nested
+							component='button'
+							onClick={() => setFilter('&tipo=31')}
+							href='#acoes'
+						>
 							projetos
 						</Nested>
-						<Nested component='button' onClick={() => setFilter('&tipo=20')}>
+						<Nested
+							component='button'
+							onClick={() => setFilter('&tipo=30')}
+							href='#acoes'
+						>
 							eventos
 						</Nested>
-						<Nested component='button' onClick={() => setFilter('&tipo=29')}>
+						<Nested
+							component='button'
+							onClick={() => setFilter('&tipo=29')}
+							href='#acoes'
+						>
 							espaços
 						</Nested>
 					</Menu>

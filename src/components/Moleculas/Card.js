@@ -147,6 +147,7 @@ const CFLeft = styled.div`
 `
 
 const Card = styled(Box)`
+	cursor: pointer;
 	display: flex;
 	flex-direction: column;
 	border: 2px solid ${Palette.grey.medium};
